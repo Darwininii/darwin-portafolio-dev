@@ -4,6 +4,9 @@ import WordPress from "../icons/WordPress.astro";
 import JS from "../icons/JS.astro";
 import Tailwind from "../icons/Tailwind.astro";
 import NextJS from "../icons/NextJS.astro";
+import AstroIcon from "../icons/Astro.astro";
+import LinkButton from "./LinkButton.astro";
+import Link from "../icons/Link.astro";
 
 const TAGS = {
   WORDPRESS: {
@@ -22,7 +25,7 @@ const TAGS = {
     icon: JS,
   },
   TAILWIND: {
-    name: "Tailwind CSS",
+    name: "Tailwind",
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
@@ -31,14 +34,19 @@ const TAGS = {
     class: "bg-[#000000] text-white",
     icon: NextJS,
   },
+  ASTROICON: {
+    name: "Astro",
+    class: "bg-[#0F172A] text-white",
+    icon: AstroIcon,
+  },
 };
-
 const PROJECTS = [
   {
     title: "Resto-Bar Insignia",
     description:
       "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio. Administración de contenido y actualizaciones regulares para mantener la relevancia y atractivo del sitio. Pagina de Restaurante Gourmet.",
     link: "https://restauranteinsignia.com/",
+    wordpress: "https://restauranteinsignia.com/",
     image: "/projects/Insignia.webp",
     tags: [TAGS.WORDPRESS],
   },
@@ -47,7 +55,7 @@ const PROJECTS = [
     description:
       "Desarrollo y mantenimiento de la página web para AutoSinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio. Implementación de estrategias para mejorar la visibilidad en motores de búsqueda y atraer a más clientes potenciales. Pagina de Taller Automotriz.",
     link: "https://autosinergia.com/",
-    WordPressIcon: "https://autosinergia.com/",
+    wordpress: "https://autosinergia.com/",
     image: "/projects/AutoSinergia.webp",
     tags: [TAGS.WORDPRESS],
   },
@@ -56,37 +64,70 @@ const PROJECTS = [
     description:
       "Desarrollo de un generador de códigos QR utilizando JavaScript en Next.js.",
     link: "https://qr-generator-chi-eight.vercel.app/",
-    GitHubIcon: "https://github.com/Darwininii/qr-generator",
+    github: "https://github.com/Darwininii/qr-generator",
     image: "/projects/QR-Generator.webp",
     tags: [TAGS.GITHUB, TAGS.JAVASCRIPT, TAGS.TAILWIND, TAGS.NEXTJS],
+  },
+  {
+    title: "Portafolio",
+    description:
+      "Desarrollo de mi portafolio personal utilizando Astro y Tailwind CSS para mostrar mis proyectos y habilidades como desarrollador web.",
+    github: "https://github.com/Darwininii/darwin-portafolio-dev.git",
+    image: "/projects/Portafolio.webp",
+    tags: [TAGS.GITHUB, TAGS.TAILWIND, TAGS.ASTROICON],
   },
 ];
 ---
 
-{
-  PROJECTS.map(({ title, description, image, tags, link }) => (
-    <articule>
-      <h3 class="text-2x font-semibold text-amber-400 mb-2">{title}</h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-4 flex-row">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-3`}
-            >
-              {typeof tag === "object" && tag.icon && (
-                <tag.icon class="size-6" />
-              )}{" "}
-              {typeof tag === "object" ? tag.name : tag}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class="rounded shadow-2xl shadow-white/15"
-        src={image}
-        alt={`Captura de pantalla del Proyecto ${title}`}
-      />
-    </articule>
-  ))
-}
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ title, description, image, tags, link, github }) => (
+      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+        <div class="w-full md:w-1/2">
+          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+            <img
+              alt="Imagen del Proyecto"
+              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+              loading="lazy"
+              src={image}
+            />
+          </div>
+        </div>
+
+        <div class="w-full md:w-1/2 md:max-w-lg">
+          <h3 class="text-2xl font-bold text-yellow-500 ">{title}</h3>
+          <div class="flex flex-wrap mt-2" />
+          <ul class="flex gap-x-2 flex-row mb-2">
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+                >
+                  {typeof tag === "object" && tag.icon && (
+                    <tag.icon class="size-4" />
+                  )}{" "}
+                  {typeof tag === "object" ? tag.name : tag}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-2 text-white dark:text-gray-400">{description}</div>
+          <footer class="flex items-end justify-start mt-4 gap-x-4">
+            {github && (
+              <LinkButton href={github}>
+                <GitHub class="size-6" />
+                Codigo
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link}>
+                <Link class="size-4" />
+                Previa
+              </LinkButton>
+            )}
+          </footer>
+        </div>
+      </article>
+    ))
+  }
+</div>

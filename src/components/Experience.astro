@@ -3,23 +3,25 @@ import ExperienceItem from "./ExperienceItem.astro";
 const EXPERIENCE = [
   {
     date: "Abril - Junio 2025",
-    title: "Administrador de paginas web - WordPress",
+    title: "Administrador de paginas web",
+    company: "", // Agrega la propiedad aunque esté vacía
     description:
       "Creación y administración de paginas web en WordPress, optimización SEO, gestión de contenido y mantenimiento técnico para asegurar un rendimiento óptimo.",
   },
   {
     date: "Julio - Diciembre 2023",
-    title: "Coordinador de Laboratorios - Universidad Simón Bolívar",
+    title: "Coordinador de Laboratorios",
+    company: "Universidad Simón Bolívar",
     description:
       "Supervisión y coordinación de los laboratorios de la universidad, asegurando el correcto funcionamiento de los equipos, mantenimiento preventivo a los equipos de computo, gestión de inventario, actualización de Software y la implementación de un software estadístico de las licencias.",
   },
 ];
 ---
 
-<ol class="relative border-s border-gray-200 ml-3">
+<ol class="relative mt-16">
   {
     EXPERIENCE.map((experience) => (
-      <li class="mb-10 ms-4">
+      <li class="">
         <ExperienceItem {...experience} />
       </li>
     ))
