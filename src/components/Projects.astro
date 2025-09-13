@@ -1,0 +1,92 @@
+---
+import GitHub from "../icons/GitHub.astro";
+import WordPress from "../icons/WordPress.astro";
+import JS from "../icons/JS.astro";
+import Tailwind from "../icons/Tailwind.astro";
+import NextJS from "../icons/NextJS.astro";
+
+const TAGS = {
+  WORDPRESS: {
+    name: "WordPress",
+    class: "bg-[#244E8A] text-white",
+    icon: WordPress,
+  },
+  GITHUB: {
+    name: "GitHub",
+    class: "bg-[#171515] text-white",
+    icon: GitHub,
+  },
+  JAVASCRIPT: {
+    name: "JavaScript",
+    class: "bg-[#F7DF1E] text-black",
+    icon: JS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  NEXTJS: {
+    name: "Next.js",
+    class: "bg-[#000000] text-white",
+    icon: NextJS,
+  },
+};
+
+const PROJECTS = [
+  {
+    title: "Resto-Bar Insignia",
+    description:
+      "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio. Administración de contenido y actualizaciones regulares para mantener la relevancia y atractivo del sitio. Pagina de Restaurante Gourmet.",
+    link: "https://restauranteinsignia.com/",
+    image: "/projects/Insignia.webp",
+    tags: [TAGS.WORDPRESS],
+  },
+  {
+    title: "AutoSinergia",
+    description:
+      "Desarrollo y mantenimiento de la página web para AutoSinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio. Implementación de estrategias para mejorar la visibilidad en motores de búsqueda y atraer a más clientes potenciales. Pagina de Taller Automotriz.",
+    link: "https://autosinergia.com/",
+    WordPressIcon: "https://autosinergia.com/",
+    image: "/projects/AutoSinergia.webp",
+    tags: [TAGS.WORDPRESS],
+  },
+  {
+    title: "QR-Generator",
+    description:
+      "Desarrollo de un generador de códigos QR utilizando JavaScript en Next.js.",
+    link: "https://qr-generator-chi-eight.vercel.app/",
+    GitHubIcon: "https://github.com/Darwininii/qr-generator",
+    image: "/projects/QR-Generator.webp",
+    tags: [TAGS.GITHUB, TAGS.JAVASCRIPT, TAGS.TAILWIND, TAGS.NEXTJS],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ title, description, image, tags, link }) => (
+    <articule>
+      <h3 class="text-2x font-semibold text-amber-400 mb-2">{title}</h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-4 flex-row">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-3`}
+            >
+              {typeof tag === "object" && tag.icon && (
+                <tag.icon class="size-6" />
+              )}{" "}
+              {typeof tag === "object" ? tag.name : tag}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        class="rounded shadow-2xl shadow-white/15"
+        src={image}
+        alt={`Captura de pantalla del Proyecto ${title}`}
+      />
+    </articule>
+  ))
+}

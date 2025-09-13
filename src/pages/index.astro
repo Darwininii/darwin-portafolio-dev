@@ -1,16 +1,77 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Badge from "../components/Badge.astro";
+import LinkedinIcon from "../icons/Linkedin.astro";
+import GithubIcon from "../icons/GitHub.astro";
+import SocialPill from "../components/SocialPill.astro";
+import MailIcon from "../icons/Mail.astro";
+import Experience from "../components/Experience.astro";
+import Container from "../components/Container.astro";
+import SuitcaseIcon from "../icons/Suitcase.astro";
+import CodeIcon from "../icons/Code.astro";
+import Projects from "../components/Projects.astro";
 
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Portafolio de Darwin Niño - Ingeniero de Sistemas y Desarrollador Web"
+  description="Portafolio de Darwin Niño, Ingeniero de Sistemas y Desarrollador Web, apasionado por la tecnología y el aprendizaje continuo."
+>
+  <main class="px-4">
+    <Container class="py-16 md:pb-24">
+      <img
+        class="rounded-full size-12 mb-4"
+        src="/darwin.png"
+        alt="Foto de Darwin"
+      />
+      <h1
+        class="lg:text-5xl md:text4xl text-3xl text-white font-bold flex flex-row gap-x-size-4 md:4 pb-6 lg:pb-10"
+      >
+        Hey, Soy Darwin Niño <a
+          href="https://www.linkedin.com/in/darwin-ni%C3%B1o/"
+          target="_blank"
+          rel="noopener"
+          class="flex justify-center items-center"
+        >
+          <Badge>Disponible para Trabajar</Badge>
+        </a>
+      </h1>
+      <h2 class="text-xl lg:text-wrap max-w-[700px]">
+        <span class="text-amber-400">Ingeniero de Sistemas</span><span
+          class="opacity-75"
+          >, apasionado por la tecnología y el aprendizaje continuo.</span
+        >
+        <span class="text-amber-400">Desarrollador web.</span>
+      </h2>
+      <nav class="flex gap-5 mt-5 flex-wrap">
+        <SocialPill href="https://www.linkedin.com/in/darwin-ni%C3%B1o/">
+          <LinkedinIcon class="size-4 md:size-6" /> LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/Darwininii">
+          <GithubIcon class="size-4 md:size-6" /> GitHub
+        </SocialPill>
+        <SocialPill href="mailto:darwninoe@gmail.com">
+          <MailIcon class="size-4 md:size-6" /> Email
+        </SocialPill>
+      </nav>
+    </Container>
+    <Container id="experiencia">
+      <h2
+        class="text-3xl font-semibold text-white mb-7 flex gap-x-3 items-center"
+      >
+        <SuitcaseIcon class="size-7" />
+        Experiencia Laboral
+      </h2>
+      <Experience />
+    </Container>
+    <Container id="proyectos" class="py-16 md:pb-24">
+      <h2 class="text-3xl font-semibold mb-7 flex gap-x-3 items-center">
+        <CodeIcon class="size-7" />
+        Proyectos
+      </h2>
+      <Projects />
+    </Container>
+  </main>
+</Layout>
