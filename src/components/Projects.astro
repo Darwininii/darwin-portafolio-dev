@@ -5,6 +5,9 @@ import JS from "../icons/JS.astro";
 import Tailwind from "../icons/Tailwind.astro";
 import NextJS from "../icons/NextJS.astro";
 import AstroIcon from "../icons/AstroIcon.astro";
+import Firebase from "../icons/Firebase.astro";
+import React from "../icons/React.astro";
+import TypeScript from "../icons/TypeScript.astro";
 import LinkButton from "./LinkButton.astro";
 import Link from "../icons/Link.astro";
 
@@ -39,8 +42,38 @@ const TAGS = {
     class: "bg-[#0F172A] text-white",
     icon: AstroIcon,
   },
+  FIREBASE: {
+    name: "Firebase",
+    class: "bg-[#FFCA28] text-black",
+    icon: Firebase,
+  },
+  REACT: {
+    name: "React",
+    class: "bg-[#61DAFB] text-black",
+    icon: React,
+  },
+  TYPESCRIPT: {
+    name: "TypeScript",
+    class: "bg-[#3178C6] text-white",
+    icon: TypeScript,
+  },
 };
 const PROJECTS = [
+  {
+    title: "QR-Darw",
+    description:
+      "Desarrollo de una pagina web para generar Código QR. Ya había realizado un proyecto similar anteriormente, sin embargo queria mejorar la interfaz visual, la experiencia y usar Studio.Firebase como una manera rapida de la creacion de una pagina web.",
+    link: "https://qr-darw-hmlk.onrender.com/",
+    github: "https://github.com/Darwininii/QR-Darw",
+    image: "/projects/QR-Darwin.webp",
+    tags: [
+      TAGS.TYPESCRIPT,
+      TAGS.FIREBASE,
+      TAGS.REACT,
+      TAGS.NEXTJS,
+      TAGS.TAILWIND,
+    ],
+  },
   {
     title: "Resto-Bar Insignia",
     description:
