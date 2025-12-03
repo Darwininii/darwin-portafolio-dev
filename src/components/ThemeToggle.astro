@@ -31,12 +31,13 @@ const THEMES = [
   <div
     transition:persist
     id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-2xl border backdrop-blur-2xl backdrop-brightness-150 bg-gradient-to-b bg-indigo-400/80 from-white/20 to-white/5 dark:bg-gray-900/50 dark:from-gray-900/30 dark:to-gray-900/10 border-white/30 dark:border-gray-700/30 shadow-2xl shadow-black/30"
   >
+  
     <ul>
       {
         THEMES.map((theme) => (
-          <li class="themes-menu-option flex items-center gap-2 px-2 py-1.5 cursor-default hover:scale-100 hover:bg-neutral-400/40 hover:text-black dark:hover:bg-gray-500/50 rounded-sm">
+          <li class="themes-menu-option flex items-center gap-2 px-2 py-1.5 cursor-pointer hover:scale-100 hover:bg-indigo-800/80 hover:text-black dark:hover:bg-indigo-700/60 rounded-sm">
             <theme.icon class="size-4" />
             {theme.name}
           </li>
@@ -55,12 +56,9 @@ const THEMES = [
   @keyframes scale-up-center {
     from {
       transform: scale(0.8);
-      opacity: 0;
     }
-
     to {
       transform: scale(1);
-      opacity: 1;
     }
   }
 </style>
@@ -129,6 +127,6 @@ const THEMES = [
 
   document.addEventListener("astro:after-swap", () => {
     updateTheme();
-    window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+    window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
   });
 </script>
