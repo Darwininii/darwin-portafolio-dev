@@ -26,7 +26,7 @@ const navItems = [
 ---
 
 <header
-  class="fixed top-2 flex items-center justify-center z-10 w-full sm:w-auto rounded-2xl transition-all duration-300 "
+  class="fixed top-2 flex w-full items-center justify-center z-50 rounded-2xl transition-all duration-300"
 >
 <nav
     class= "flex px-3 text-sm font-medium rounded-full shadow-lg bg-indigo-900/80 dark:bg-indigo-800/10 backdrop-blur-md backdrop-saturate-150 border border-white/20 dark:border-gray-800/20 justify-center items-center transition-all "
@@ -34,7 +34,7 @@ const navItems = [
     {
       navItems.map((link) => (
         <a
-          class="relative flex items-center justify-center sm:w-10 sm:h-10 px-2 py-2 transition-all hover:underline hover:text-black dark:hover:text-yellow-600 hover:scale-110 shadow-lg "
+          class="relative flex items-center justify-center px-2 py-2 transition-all hover:underline hover:text-black dark:hover:text-yellow-600 hover:scale-110 shadow-lg "
           aria-label={link.label}
           href={link.url}
         >
