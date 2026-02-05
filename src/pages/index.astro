@@ -18,8 +18,15 @@ import DownloadCV from "../components/DownloadCV.astro";
   description="Portafolio de Darwin Niño, Ingeniero de Sistemas y Desarrollador Web, apasionado por la tecnología y el aprendizaje continuo."
 >
   <main class="px-4">
-    <Container class="py-16 md:py-36">
+    <Container class="py-16 md:py-20">
       <Hero />
+    </Container>
+    <Container id="sobre-mi" class="py-16 md:py-20">
+      <TitleSection>
+        <ProfileIcon class="size-8" />
+        Sobre mí
+      </TitleSection>
+      <AboutMe />
     </Container>
   </main>
   <div class="space-y-24">
@@ -39,12 +46,7 @@ import DownloadCV from "../components/DownloadCV.astro";
       <Projects />
     </Container>
 
-    <Container id="sobre-mi">
-      <TitleSection>
-        <ProfileIcon class="size-8" />
-        Sobre mí
-      </TitleSection>
-      <AboutMe />
+    <Container>
       <DownloadCV />
     </Container>
   </div>
