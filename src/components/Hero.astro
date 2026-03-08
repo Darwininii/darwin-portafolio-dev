@@ -1,50 +1,68 @@
 ---
 const personalImageAlt = "Darwin Niño Escorcia";
-import Badge from "../components/Badge.astro";
-import LinkedInIcon from "../icons/Linkedin.astro";
-import GithubIcon from "../icons/GitHub.astro";
-import MailIcon from "../icons/Mail.astro";
-import SocialPill from "../components/SocialPill.astro";
+import Badge from "./Badge.astro";
+import { Linkedin, Github, Mail } from "@lucide/astro";
+import SocialPill from "./SocialPill.astro";
 ---
 
-<div class="max-w-xl">
-  <div class="flex gap-4 mb-4">
-    <img
-      class="rounded-full shadow-lg size-16"
-      src="/darwin.png"
-      alt={personalImageAlt}
-    />
+<div class="max-w-2xl">
+  <!-- Avatar + Badge row -->
+  <div class="flex items-center gap-4 mb-6 animate-fade-in-up">
+    <div class="relative group">
+      <div
+        class="absolute -inset-1 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] opacity-50 blur-md group-hover:opacity-80 transition-opacity duration-500"
+      >
+      </div>
+      <img
+        class="relative rounded-full size-20 md:size-24 object-cover ring-2 ring-[var(--color-border)]"
+        src="/darwin.png"
+        alt={personalImageAlt}
+      />
+    </div>
     <a
       href="https://www.linkedin.com/in/darwin-ni%C3%B1o/"
       target="_blank"
       rel="noopener"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
+      class="transition hover:scale-105"
     >
       <Badge>Disponible para trabajar</Badge>
     </a>
   </div>
+
+  <!-- Heading -->
   <h1
-    class="text-4xl font-bold tracking-tight sm:text-5xl text-white dark:text-white"
+    class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight animate-fade-in-up animate-delay-200"
   >
-    Hey, Soy Darwinini!
+    Hey, Soy
+    <span
+      class="bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent-secondary)] to-[var(--color-accent)] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]"
+    >
+      Darwinini!
+    </span>
   </h1>
+
+  <!-- Subtitle -->
   <p
-    class="mt-6 text-xl [&>strong]:text-yellow-500 [&>strong]:font-semibold text-white dark:text-gray-300"
+    class="mt-6 text-lg md:text-xl leading-relaxed text-[var(--color-text-secondary)] animate-fade-in-up animate-delay-400"
   >
-    <strong>Ingeniero de Sistemas</strong> Apasionado por la tecnología y el aprendizaje
-    continuo.
+    <strong class="text-[var(--color-accent-warm)] font-semibold">
+      Ingeniero de Sistemas,
+    </strong>
+    Desarrollador y Diseñador web. Apasionado por la tecnología y el aprendizaje continuo.
   </p>
-  <nav class="flex flex-wrap gap-4 mt-8">
+
+  <!-- Social pills -->
+  <nav class="flex flex-wrap gap-3 mt-8 animate-fade-in-up animate-delay-600">
     <SocialPill href="mailto:darwninoe@gmail.com">
-      <MailIcon class="size-4" />
+      <Mail class="size-4" />
       Email
     </SocialPill>
     <SocialPill href="https://linkedin.com/in/darwin-ni%C3%B1o/">
-      <LinkedInIcon class="size-4" />
+      <Linkedin class="size-4" />
       LinkedIn
     </SocialPill>
     <SocialPill href="https://github.com/Darwininii">
-      <GithubIcon class="size-4" />
+      <Github class="size-4" />
       GitHub
     </SocialPill>
   </nav>

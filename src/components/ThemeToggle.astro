@@ -1,132 +1,74 @@
 ---
-import SunIcon from "../icons/Sun.astro";
-import MoonIcon from "../icons/Moon.astro";
-import SystemIcon from "../icons/System.astro";
-import SunMoonIcon from "../icons/SunMoon.astro";
-
-const THEMES = [
-  { name: "Light", icon: SunIcon },
-  { name: "Dark", icon: MoonIcon },
-  { name: "System", icon: SystemIcon },
-];
+import { Sun, Moon } from "@lucide/astro";
 ---
 
-<div class="relative ml-1 mr-1">
-  <button
-    transition:persist
-    id="theme-toggle-btn"
-    class="border-none appearance-none flex hover:scale-125 transition"
-  >
-    <span class="sr-only">Elige el tema</span>
-    <SunIcon id="light" class="theme-toggle-icon size-5 transition-all" />
-    <MoonIcon
-      id="dark"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-    <SystemIcon
-      id="system"
-      class="theme-toggle-icon absolute size-5 transition-all"
-    />
-  </button>
-  <div
-    transition:persist
-    id="themes-menu"
-    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-2xl border backdrop-blur-2xl backdrop-brightness-150 bg-gradient-to-b bg-indigo-400/80 from-white/20 to-white/5 dark:bg-gray-900/50 dark:from-gray-900/30 dark:to-gray-900/10 border-white/30 dark:border-gray-700/30 shadow-2xl shadow-black/30"
-  >
-  
-    <ul>
-      {
-        THEMES.map((theme) => (
-          <li class="themes-menu-option flex items-center gap-2 px-2 py-1.5 cursor-pointer hover:scale-100 hover:bg-indigo-800/80 hover:text-black dark:hover:bg-indigo-700/60 rounded-sm">
-            <theme.icon class="size-4" />
-            {theme.name}
-          </li>
-        ))
-      }
-    </ul>
-  </div>
-</div>
-
-<style>
-  #themes-menu.open {
-    display: inline;
-    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-
-  @keyframes scale-up-center {
-    from {
-      transform: scale(0.8);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-</style>
+<button
+  class="theme-toggle-btn flex items-center justify-center size-9 rounded-lg hover:bg-[var(--color-bg-card)] transition-all duration-200 hover:scale-110"
+  aria-label="Cambiar tema"
+>
+  <span class="theme-icon-sun">
+    <Sun class="size-5 text-[var(--color-accent-warm)]" />
+  </span>
+  <span class="theme-icon-moon hidden">
+    <Moon class="size-5 text-[var(--color-accent)]" />
+  </span>
+</button>
 
 <script is:inline>
-  let remove = null;
-  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  const themesMenu = document.getElementById("themes-menu");
+  if (!window.__themeToggleInit) {
+    window.__themeToggleInit = true;
 
-  const getThemePreference = () => {
-    if (typeof localStorage !== "undefined") {
-      return localStorage.getItem("theme") ?? "system";
-    }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
+    (function () {
+      var matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const updateIcon = (themePreference) => {
-    document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
-      element.style.scale = element.id === themePreference ? "1" : "0";
-    });
-  };
+      function isDarkMode() {
+        return document.documentElement.classList.contains("dark");
+      }
 
-  const updateTheme = () => {
-    if (remove != null) {
-      remove();
-    }
-    matchMedia.addEventListener("change", updateTheme);
-    remove = () => {
-      matchMedia.removeEventListener("change", updateTheme);
-    };
+      function updateIcons() {
+        var dark = isDarkMode();
+        document.querySelectorAll(".theme-icon-sun").forEach(function (el) {
+          el.classList.toggle("hidden", dark);
+        });
+        document.querySelectorAll(".theme-icon-moon").forEach(function (el) {
+          el.classList.toggle("hidden", !dark);
+        });
+      }
 
-    const themePreference = getThemePreference();
-    const isDark =
-      themePreference === "dark" ||
-      (themePreference === "system" && matchMedia.matches);
+      function applyTheme() {
+        var saved = localStorage.getItem("theme");
+        var shouldBeDark = saved === "dark" || (!saved && matchMedia.matches);
 
-    updateIcon(themePreference);
-    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-  };
+        document.documentElement.classList.toggle("dark", shouldBeDark);
+        updateIcons();
+      }
 
-  updateTheme();
+      // Initial apply
+      applyTheme();
 
-  document.addEventListener("click", () => themesMenu.classList.remove("open"));
-
-  document.getElementById("theme-toggle-btn").addEventListener("click", (e) => {
-    e.stopPropagation();
-    const isClosed = !themesMenu.classList.contains("open");
-    themesMenu.classList[isClosed ? "add" : "remove"]("open");
-
-    // Agregar listeners solo cuando el menú se abre
-    if (isClosed) {
-      document.querySelectorAll(".themes-menu-option").forEach((element) => {
-        element.onclick = (e) => {
-          localStorage.setItem(
-            "theme",
-            e.target.innerText.toLowerCase().trim()
-          );
-          updateTheme();
-          themesMenu.classList.remove("open");
-        };
+      // Listen for system preference changes
+      matchMedia.addEventListener("change", function () {
+        if (!localStorage.getItem("theme")) {
+          applyTheme();
+        }
       });
-    }
-  });
 
-  document.addEventListener("astro:after-swap", () => {
-    updateTheme();
-    window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
-  });
+      // Click handler — toggle dark ↔ light
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".theme-toggle-btn");
+        if (!btn) return;
+
+        var dark = isDarkMode();
+        localStorage.setItem("theme", dark ? "light" : "dark");
+        document.documentElement.classList.toggle("dark", !dark);
+        updateIcons();
+      });
+
+      // Astro page transitions
+      document.addEventListener("astro:after-swap", function () {
+        window.__themeToggleInit = false;
+        applyTheme();
+      });
+    })();
+  }
 </script>

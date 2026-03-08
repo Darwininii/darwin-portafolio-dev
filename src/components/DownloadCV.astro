@@ -1,15 +1,25 @@
 ---
-// filepath: src/components/DownloadCV.astro
-import CvIcon from "../icons/Cv.astro";
+import { Download } from "@lucide/astro";
 ---
 
-<div class="flex justify-center mt-4">
+<div class="flex justify-center mt-8 reveal">
   <a
     href="/Darwin_Nino_2026.pdf"
     download
-    class="inline-flex text-white border-gray-300 items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition dark:text-white border hover:text-black dark:border-gray-600 focus-visible:ring-yellow-400/80 text-md hover:scale-110 hover:bg-white hover:border-black group max-w-fit rounded-xl dark:hover:bg-black dark:hover:text-white dark:hover:border-black focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
+    class="group relative inline-flex items-center justify-center gap-3 px-6 py-3 text-base font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_var(--color-glow)] active:scale-95"
   >
-    <CvIcon class="size-5" />
-    Descargar Currilum Vitae
+    <!-- Gradient background -->
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] transition-opacity duration-300"
+    >
+    </div>
+    <!-- Shimmer overlay -->
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity"
+    >
+    </div>
+    <!-- Content -->
+    <Download class="relative size-5 text-white" />
+    <span class="relative text-white">Descargar Curriculum Vitae</span>
   </a>
 </div>

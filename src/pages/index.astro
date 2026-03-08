@@ -1,11 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import { User, Briefcase, Code2 } from "@lucide/astro";
 import AboutMe from "../components/AboutMe.astro";
-import CodeIcon from "../icons/Code.astro";
-import SuitcaseIcon from "../icons/Suitcase.astro";
 import Experience from "../components/Experience.astro";
-import ProfileIcon from "../icons/Profile.astro";
 import Projects from "../components/Projects.astro";
 import Container from "../components/Container.astro";
 import Hero from "../components/Hero.astro";
@@ -17,36 +14,38 @@ import DownloadCV from "../components/DownloadCV.astro";
   title="Portafolio de Darwin Niño - Ingeniero de Sistemas y Desarrollador Web"
   description="Portafolio de Darwin Niño, Ingeniero de Sistemas y Desarrollador Web, apasionado por la tecnología y el aprendizaje continuo."
 >
-  <main class="px-4">
-    <Container class="py-16 md:py-20">
+  <main>
+    <!-- Hero Section -->
+    <Container class="pt-24 pb-16 md:pt-32 md:pb-24">
       <Hero />
     </Container>
+
+    <!-- About Me -->
     <Container id="sobre-mi" class="py-16 md:py-20">
       <TitleSection>
-        <ProfileIcon class="size-8" />
+        <User class="size-7 text-[var(--color-accent)]" />
         Sobre mí
       </TitleSection>
       <AboutMe />
-      <Container>
-        <DownloadCV />
-      </Container>
+      <DownloadCV />
     </Container>
-  </main>
-  <div class="space-y-24">
-    <Container id="experiencia">
+
+    <!-- Experience -->
+    <Container id="experiencia" class="py-16 md:py-20">
       <TitleSection>
-        <SuitcaseIcon class="size-8" />
+        <Briefcase class="size-7 text-[var(--color-accent)]" />
         Experiencia laboral
       </TitleSection>
       <Experience />
     </Container>
 
-    <Container id="proyectos">
+    <!-- Projects -->
+    <Container id="proyectos" class="py-16 md:py-20">
       <TitleSection>
-        <CodeIcon class="size-7" />
+        <Code2 class="size-7 text-[var(--color-accent)]" />
         Proyectos
       </TitleSection>
       <Projects />
     </Container>
-  </div>
+  </main>
 </Layout>

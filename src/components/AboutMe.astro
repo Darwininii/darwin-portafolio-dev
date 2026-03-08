@@ -2,89 +2,66 @@
 const personalImageAlt = "Darwin Niño Escorcia";
 ---
 
-<article
-  class="flex flex-col items-center justify-center gap-8 text-white dark:text-slate-400 md:flex-row"
->
+<article class="flex flex-col items-center gap-10 md:flex-row reveal">
+  <!-- Text content -->
   <div
-    class="[&>p]:mb-4 [&>p>strong]:text-yellow-500 dark:[&>p>strong]:text-yellow-100 [&>p>strong]:font-normal [&>p>strong]:font-mono text-pretty order-2 md:order-1"
+    class="flex-1 order-2 md:order-1 space-y-5 text-[var(--color-text-secondary)] leading-relaxed text-pretty"
   >
     <p>
-      Soy Darwin Niño, aunque mis amigos me llaman <strong>Darwinini</strong>.
-      Empecé en la programación a los 18 años, durante mi etapa en la
-      universidad, utilizando <strong>Java</strong>. Actualmente me encuentro
-      estudiando, aprendiendo y reforzando mis conocimientos en el mundo del
-      desarrollo de software web y el diseño web.
+      Soy Darwin Niño, aunque mis amigos me llaman
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
+        >Darwinini</strong
+      >. Empecé en la programación a los 18 años, durante mi etapa en la
+      universidad, utilizando
+      <strong class="text-[var(--color-accent-warm)] font-semibold">Java</strong
+      >. Actualmente me encuentro estudiando, aprendiendo y reforzando mis
+      conocimientos en el mundo del desarrollo de software web y el diseño web.
     </p>
 
     <p>
-      Algunos de mis logros incluyen la creación de una <strong
+      Algunos de mis logros incluyen la creación de una
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
         >página web para generar códigos QR</strong
-      >, que si bien no es perfecta, cumple con su propósito. Desarrollo de <strong
+      >, que si bien no es perfecta, cumple con su propósito. Desarrollo de
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
         >aplicaciones web desde cero</strong
-      >, usando <strong> React </strong> y diseño web en <strong
+      >, usando
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
+        >React</strong
+      > y diseño web en
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
         >WordPress</strong
-      >, y también el desarrollo de un <strong
+      >, y también el desarrollo de un
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
         >software estadístico para la gestión de licencias</strong
-      > utilizando <strong>C#</strong>.
+      > utilizando
+      <strong class="text-[var(--color-accent-warm)] font-semibold">C#</strong>.
     </p>
+
     <p>
-      Actualmente sigo dedicando mi tiempo a realizar <strong
+      Actualmente sigo dedicando mi tiempo a realizar
+      <strong class="text-[var(--color-accent-warm)] font-semibold"
         >proyectos personales</strong
       >, lo que me permite reforzar mis habilidades, crecer profesionalmente y
       continuar avanzando hacia mis objetivos.
     </p>
   </div>
 
-  <img
-    width="200"
-    height="200"
-    src="/darwin.png"
-    alt={personalImageAlt}
-    class="order-1 object-cover w-64 h-full p-1 md:order-2 rotate-3 lg:p-2 lg:w-64 aspect-square rounded-2xl bg-yellow-500/5 ring-1 ring-white/20 dark:bg-black/20 dark:ring-black/70"
-    style="object-position: 50% 50%"
-  />
+  <!-- Profile image -->
+  <div class="order-1 md:order-2 flex-shrink-0">
+    <div class="relative group">
+      <div
+        class="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-[var(--color-accent)]/20 to-[var(--color-accent-secondary)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+      >
+      </div>
+      <img
+        width="250"
+        height="250"
+        src="/darwin.png"
+        alt={personalImageAlt}
+        class="relative w-52 md:w-64 aspect-square object-cover rounded-2xl ring-1 ring-[var(--color-border)] shadow-2xl shadow-black/20 transition-transform duration-500 group-hover:scale-[1.02]"
+        style="object-position: 50% 50%"
+      />
+    </div>
+  </div>
 </article>
-
-<!-- FRASES PROHIBIDAS EN VUESTRO PORTFOLIO
-
-<p>
-  Mi sueño es encontrar mi primer empleo en el mundo de la programación. Una empresa donde pueda seguir aprendiendo. ❌
-</p>
-
-<p>
-  ❌ Apasionado de la programación desde chekitito. Me encantan los ordenadores y crear páginas web buenas y rápidas con la última tecnología.
-</p>
-
-<p>
-  Trabajo bien en equipo. Siempre estoy aprendiendo cosas nuevas.
-</p>
-
--------------------------------------
-
---------------------------------------
-
-<p>
-  ¡Soy Leo! Estudié Derecho Empresarial y, tras años ejerciendo, me pasé al mundo de la Programación. Desde entonces disfruto creando experiencias web para los usuarios.
-</p>
-
-<p>
-  Entre mis éxitos destaco que durante el Grado Superior, ayudé a mis compañeros a aprender sobre TDD. Me encanta el testing, creo en su importancia, y me gusta compartir mi conocimiento sobre ello.
-</p>
-
-<p>
-  Cuento con experiencia desarrollando aplicaciones móviles, y he creado una iniciativa llamada X para mezclar mis dos pasiones: la programación y el derecho. Ayudando a la sociedad a acceso a una defensa justa.
-</p>
-
----------------------------------------
-
-<p>Me llamo Sara, tengo 25 años y soy de Santiago, Chile 🇨🇱. Terminé mis estudios como Desarrolladora Web. Me encanta enfocarme en la parte del rendimiento, para ofrecer la mejora experiencia al usuario.</p>
-
-<p>
-  Colaboro en la organización del MeetUp local BeerJS donde reunimos a desarrolladores de Santiago para compartir conocimiento y experiencias. El año 2023 hicimos un total de 25 charlas con más de 2000 asistentes.
-</p>
-
-<p>
-  Además de participar activamente en la comunidad, he participado en la Hackathon de Midudev quedando en 3er puesto con mi proyecto _Chatty_, donde usando IA podías interactuar con un PDF. ¡Échale un vistazo!
-</p>
-
--->

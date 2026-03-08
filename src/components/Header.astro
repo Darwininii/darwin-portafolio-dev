@@ -1,40 +1,89 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import { Menu, X } from "@lucide/astro";
 
 const navItems = [
-  {
-    title: "Sobre mí",
-    label: "sobre-mi",
-    url: "#sobre-mi",
-  },
-  {
-    title: "Experiencia",
-    label: "experiencia",
-    url: "#experiencia",
-  },
-  {
-    title: "Proyectos",
-    label: "proyectos",
-    url: "#proyectos",
-  },
-  {
-    title: "Contacto",
-    label: "contacto",
-    url: "mailto:darwninoe@gmail.com",
-  },
+  { title: "Sobre mí", label: "sobre-mi", url: "#sobre-mi" },
+  { title: "Experiencia", label: "experiencia", url: "#experiencia" },
+  { title: "Proyectos", label: "proyectos", url: "#proyectos" },
+  { title: "Contacto", label: "contacto", url: "mailto:darwninoe@gmail.com" },
 ];
 ---
 
+<!-- Desktop nav -->
 <header
-  class="fixed top-2 flex w-full items-center justify-center z-50 rounded-2xl transition-all duration-300"
+  id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
 >
+  <div class="hidden md:flex justify-center pt-4">
+    <nav
+      class="glass px-6 py-2.5 flex items-center gap-1 rounded-full shadow-lg shadow-black/10"
+    >
+      {
+        navItems.map((link) => (
+          <a
+            class="nav-link relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:bg-[var(--color-glow)]"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+      <div class="ml-2 pl-2 border-l border-[var(--color-border)]">
+        <ThemeToggle />
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile top bar -->
+  <div
+    class="flex md:hidden items-center justify-between px-5 py-3 bg-[var(--color-bg-primary)] border-b border-[var(--color-border)]"
+  >
+    <a href="/" class="text-lg font-bold text-[var(--color-accent)]">
+      Darwinini
+    </a>
+    <div class="flex items-center gap-3">
+      <ThemeToggle />
+      <button
+        id="mobile-menu-btn"
+        class="relative z-[70] flex items-center justify-center size-10 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]/30 transition-all duration-200"
+        aria-label="Abrir menú"
+      >
+        <span id="menu-icon-open">
+          <Menu class="size-5" />
+        </span>
+        <span id="menu-icon-close" class="hidden">
+          <X class="size-5" />
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile full-screen overlay (OUTSIDE header) -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] pointer-events-none md:hidden"
+  aria-hidden="true"
+>
+  <!-- Clickable backdrop to close -->
+  <div
+    id="mobile-backdrop"
+    class="absolute inset-0 bg-[var(--color-bg-primary)]/98 backdrop-blur-xl opacity-0 transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Menu content -->
   <nav
-    class="px-3 flex text-sm font-medium rounded-full shadow-lg bg-indigo-900/80 dark:bg-indigo-800/10 backdrop-blur-md backdrop-saturate-150 border border-white/20 dark:border-gray-800/20 justify-center items-center transition-all"
+    id="mobile-nav-content"
+    class="relative flex flex-col items-center justify-center h-full gap-10 opacity-0 transition-opacity duration-300"
   >
     {
-      navItems.map((link) => (
+      navItems.map((link, i) => (
         <a
-          class="relative flex items-center justify-center px-2 py-2 transition-all hover:underline hover:text-black dark:hover:text-yellow-600 hover:scale-110 shadow-lg "
+          class="mobile-nav-link text-3xl font-bold tracking-tight transition-all duration-400 translate-y-6 opacity-0 text-[var(--color-text-primary)] hover:text-[var(--color-accent)]"
+          style={`transition-delay: ${i * 100 + 150}ms`}
           aria-label={link.label}
           href={link.url}
         >
@@ -42,61 +91,152 @@ const navItems = [
         </a>
       ))
     }
-    <ThemeToggle />
   </nav>
-</header>
+</div>
+
+<!-- Spacer for fixed header on mobile -->
+<div class="h-14 md:h-0"></div>
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("header nav a");
+    const header = document.getElementById("main-header");
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileBackdrop = document.getElementById("mobile-backdrop");
+    const mobileNavContent = document.getElementById("mobile-nav-content");
+    const iconOpen = document.getElementById("menu-icon-open");
+    const iconClose = document.getElementById("menu-icon-close");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500");
-            } else {
-              item.classList.remove("text-yellow-500");
-            }
-          });
-        }
+    let isMenuOpen = false;
+
+    function openMobileMenu() {
+      isMenuOpen = true;
+      mobileMenu?.classList.remove("pointer-events-none");
+      mobileMenu?.classList.add("pointer-events-auto");
+      mobileMenu?.setAttribute("aria-hidden", "false");
+
+      mobileBackdrop?.classList.add("opacity-100");
+      mobileBackdrop?.classList.remove("opacity-0");
+
+      mobileNavContent?.classList.add("opacity-100");
+      mobileNavContent?.classList.remove("opacity-0");
+
+      mobileLinks.forEach((link) => {
+        link.classList.add("translate-y-0", "opacity-100");
+        link.classList.remove("translate-y-6", "opacity-0");
       });
-    };
 
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
-    });
+      iconOpen?.classList.add("hidden");
+      iconClose?.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+    function closeMobileMenu() {
+      isMenuOpen = false;
 
-    // Cleanup function
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect();
+      mobileBackdrop?.classList.remove("opacity-100");
+      mobileBackdrop?.classList.add("opacity-0");
+
+      mobileNavContent?.classList.remove("opacity-100");
+      mobileNavContent?.classList.add("opacity-0");
+
+      mobileLinks.forEach((link) => {
+        link.classList.remove("translate-y-0", "opacity-100");
+        link.classList.add("translate-y-6", "opacity-0");
+      });
+
+      iconOpen?.classList.remove("hidden");
+      iconClose?.classList.add("hidden");
+      document.body.style.overflow = "";
+
+      setTimeout(() => {
+        mobileMenu?.classList.add("pointer-events-none");
+        mobileMenu?.classList.remove("pointer-events-auto");
+        mobileMenu?.setAttribute("aria-hidden", "true");
+      }, 350);
+    }
+
+    // Toggle on hamburger button click
+    mobileMenuBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (isMenuOpen) {
+        closeMobileMenu();
       } else {
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
+        openMobileMenu();
       }
-    };
+    });
+
+    // Close on link click
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+    });
+
+    // Close when clicking ANYWHERE on the overlay (above, below, or beside links)
+    mobileMenu?.addEventListener("click", () => {
+      if (isMenuOpen) closeMobileMenu();
+    });
+
+    // Active section highlighting (desktop)
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((item) => {
+              if (item.getAttribute("aria-label") === entry.target.id) {
+                item.classList.add(
+                  "text-[var(--color-accent)]",
+                  "bg-[var(--color-glow)]",
+                );
+              } else {
+                item.classList.remove(
+                  "text-[var(--color-accent)]",
+                  "bg-[var(--color-glow)]",
+                );
+              }
+            });
+          }
+        });
+      },
+      { root: null, rootMargin: "0px", threshold: 0.3 },
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    // Header background on scroll
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 50) {
+          header?.classList.add("header-scrolled");
+        } else {
+          header?.classList.remove("header-scrolled");
+        }
+      },
+      { passive: true },
+    );
   });
 </script>
 
 <style>
   header {
-    transform: translateY(-40px);
-    animation: slideDown 0.7s ease-out forwards;
+    animation: slideDown 0.7s var(--ease-smooth) both;
   }
 
-  @keyframes slideDown {
-    to {
-      transform: translateY(0);
-    }
+  .header-scrolled {
+    background-color: rgba(11, 13, 23, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(html:not(.dark)) .header-scrolled {
+    background-color: rgba(248, 249, 252, 0.9);
   }
 </style>

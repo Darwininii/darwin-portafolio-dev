@@ -1,17 +1,18 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro";
+
 const EXPERIENCE = [
   {
     date: "Diciembre - Actualidad",
     title: "Analista De Soporte TI",
-    company: "SmartTech", // Agrega la propiedad aunque esté vacía
+    company: "SmartTech",
     description:
       "Resolución de problemas de hardware, software para la empresa de Bolten Sprays como prestador de Serivicio. Mi principal función, configuración y mantenimiento de equipos, diagnosticar, solucionar incidencias para asegurar la continuidad operativa de la empresa y proporcionar orientación sobre el uso de la tecnología y realizar tareas básicas de seguridad",
   },
   {
     date: "Abril - Junio 2025",
     title: "Administrador de paginas web",
-    company: "", // Agrega la propiedad aunque esté vacía
+    company: "",
     description:
       "Creación y administración de paginas web en WordPress, optimización SEO, gestión de contenido y mantenimiento técnico para asegurar un rendimiento óptimo.",
   },
@@ -25,12 +26,20 @@ const EXPERIENCE = [
 ];
 ---
 
-<ol class="relative mt-16">
-  {
-    EXPERIENCE.map((experience) => (
-      <li class="">
-        <ExperienceItem {...experience} />
-      </li>
-    ))
-  }
-</ol>
+<div class="relative mt-12">
+  <!-- Timeline line -->
+  <div
+    class="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-accent)]/50 via-[var(--color-accent-secondary)]/30 to-transparent"
+  >
+  </div>
+
+  <ol class="relative space-y-10">
+    {
+      EXPERIENCE.map((experience, i) => (
+        <li style={`--delay: ${i * 150}ms`}>
+          <ExperienceItem {...experience} />
+        </li>
+      ))
+    }
+  </ol>
+</div>

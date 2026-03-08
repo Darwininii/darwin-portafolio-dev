@@ -1,64 +1,65 @@
 ---
-import GitHub from "../icons/GitHub.astro";
-import WordPress from "../icons/WordPress.astro";
-import JS from "../icons/JS.astro";
-import Tailwind from "../icons/Tailwind.astro";
-import NextJS from "../icons/NextJS.astro";
-import AstroIcon from "../icons/AstroIcon.astro";
-import Firebase from "../icons/Firebase.astro";
-import React from "../icons/React.astro";
-import TypeScript from "../icons/TypeScript.astro";
+import { Github, ExternalLink, ChevronDown } from "@lucide/astro";
 import LinkButton from "./LinkButton.astro";
-import Link from "../icons/Link.astro";
 
 const TAGS = {
   WORDPRESS: {
     name: "WordPress",
-    class: "bg-[#244E8A] text-white",
-    icon: WordPress,
+    class: "bg-[#244E8A]/20 text-[#5B9BD5] border-[#244E8A]/30",
   },
   GITHUB: {
     name: "GitHub",
-    class: "bg-[#171515] text-white",
-    icon: GitHub,
+    class: "bg-white/5 text-[var(--color-text-secondary)] border-white/10",
   },
   JAVASCRIPT: {
     name: "JavaScript",
-    class: "bg-[#F7DF1E] text-black",
-    icon: JS,
+    class: "bg-[#F7DF1E]/10 text-[#F7DF1E] border-[#F7DF1E]/20",
   },
   TAILWIND: {
     name: "Tailwind",
-    class: "bg-[#003159] text-white",
-    icon: Tailwind,
+    class: "bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/20",
   },
   NEXTJS: {
     name: "Next.js",
-    class: "bg-[#000000] text-white",
-    icon: NextJS,
+    class: "bg-white/5 text-[var(--color-text-primary)] border-white/10",
   },
   ASTROICON: {
     name: "Astro",
-    class: "bg-[#0F172A] text-white",
-    icon: AstroIcon,
+    class: "bg-[#BC52EE]/10 text-[#BC52EE] border-[#BC52EE]/20",
   },
   FIREBASE: {
     name: "Firebase",
-    class: "bg-[#FFCA28] text-black",
-    icon: Firebase,
+    class: "bg-[#FFCA28]/10 text-[#FFCA28] border-[#FFCA28]/20",
   },
   REACT: {
     name: "React",
-    class: "bg-[#61DAFB] text-black",
-    icon: React,
+    class: "bg-[#61DAFB]/10 text-[#61DAFB] border-[#61DAFB]/20",
   },
   TYPESCRIPT: {
     name: "TypeScript",
-    class: "bg-[#3178C6] text-white",
-    icon: TypeScript,
+    class: "bg-[#3178C6]/10 text-[#3178C6] border-[#3178C6]/20",
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-[#646CFF]/10 text-[#646CFF] border-[#646CFF]/20",
+  },
+  SUPABASE: {
+    name: "Supabase",
+    class: "bg-[#3ECF8E]/10 text-[#3ECF8E] border-[#3ECF8E]/20",
   },
 };
+
 const PROJECTS = [
+  {
+    title: "Darwinini Ecommerce",
+    description:
+      "Desarrollé una aplicación de Ecommerce (comercio electrónico) como proyecto personal, con el objetivo de poner en práctica mis conocimientos en desarrollo web fullstack. La plataforma cuenta con un sistema de autenticación de usuarios, catálogo de productos con filtros y búsqueda avanzada, carrito de compras interactivo, integración de pasarela de pagos, panel de administración para gestión de inventario y pedidos, y un diseño responsivo optimizado para todo tipo de dispositivos. Construida con React y Vite para un rendimiento ultrarrápido, estilizada con Tailwind CSS y respaldada por Supabase como backend.",
+    link: "https://darwinini-ecommerce.vercel.app/",
+    github: "https://github.com/Darwininii/Alma-Cafe.git",
+    image: "/projects/ecommerce.png",
+    images: ["/projects/ecommerce.png", "/projects/ecommerce-2.png"],
+    tags: [TAGS.REACT, TAGS.VITE, TAGS.TAILWIND, TAGS.SUPABASE],
+  },
   {
     title: "AireTec",
     description:
@@ -80,18 +81,16 @@ const PROJECTS = [
   {
     title: "Resto-Bar Insignia",
     description:
-      "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio. Administración de contenido y actualizaciones regulares para mantener la relevancia y atractivo del sitio. Pagina de Restaurante Gourmet.",
+      "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio.",
     link: "https://restauranteinsignia.com/",
-    wordpress: "https://restauranteinsignia.com/",
     image: "/projects/Insignia.webp",
     tags: [TAGS.WORDPRESS],
   },
   {
     title: "AutoSinergia",
     description:
-      "Desarrollo y mantenimiento de la página web para AutoSinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio. Implementación de estrategias para mejorar la visibilidad en motores de búsqueda y atraer a más clientes potenciales. Pagina de Taller Automotriz.",
+      "Desarrollo y mantenimiento de la página web para AutoSinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio.",
     link: "https://autosinergia.com/",
-    wordpress: "https://autosinergia.com/",
     image: "/projects/AutoSinergia.webp",
     tags: [TAGS.WORDPRESS],
   },
@@ -115,55 +114,242 @@ const PROJECTS = [
 ];
 ---
 
-<div class="flex flex-col gap-y-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
   {
-    PROJECTS.map(({ title, description, image, tags, link, github }) => (
-      <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-        <div class="w-full md:w-1/2">
-          <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-            <img
-              alt="Imagen del Proyecto"
-              class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-              loading="lazy"
-              src={image}
-            />
-          </div>
-        </div>
-
-        <div class="w-full md:w-1/2 md:max-w-lg">
-          <h3 class="text-2xl font-bold text-yellow-500 ">{title}</h3>
-          <div class="flex flex-wrap mt-2" />
-          <ul class="flex gap-x-2 flex-row mb-2">
-            {tags.map((tag) => (
-              <li>
-                <span
-                  class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+    PROJECTS.map(
+      ({ title, description, image, images, tags, link, github }, i) => (
+        <article
+          class="group glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_var(--color-glow)] hover:border-[var(--color-accent)]/20 hover:-translate-y-1 reveal"
+          style={`animation-delay: ${i * 100}ms`}
+        >
+          {/* Image — if multiple images, show a gallery */}
+          <div class="relative overflow-hidden aspect-video">
+            {images && images.length > 1 ? (
+              <div
+                class="project-gallery relative w-full h-full"
+                data-current="0"
+              >
+                {images.map((img, idx) => (
+                  <img
+                    alt={`Proyecto: ${title} - ${idx + 1}`}
+                    class={`absolute inset-0 object-cover object-top w-full h-full transition-opacity duration-500 ${idx === 0 ? "opacity-100" : "opacity-0"}`}
+                    data-gallery-img={idx.toString()}
+                    loading="lazy"
+                    src={img}
+                  />
+                ))}
+                {/* Gallery dots */}
+                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                  {images.map((_, idx) => (
+                    <button
+                      class={`gallery-dot size-2 rounded-full transition-all ${idx === 0 ? "bg-white scale-125" : "bg-white/40"}`}
+                      data-dot={idx.toString()}
+                      aria-label={`Imagen ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+                {/* Nav arrows */}
+                <button
+                  class="gallery-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
+                  aria-label="Anterior"
                 >
-                  {typeof tag === "object" && tag.icon && (
-                    <tag.icon class="size-4" />
-                  )}{" "}
-                  {typeof tag === "object" ? tag.name : tag}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <div class="mt-2 text-white dark:text-gray-400">{description}</div>
-          <footer class="flex items-end justify-start mt-4 gap-x-4">
-            {github && (
-              <LinkButton href={github}>
-                <GitHub class="size-6" />
-                Codigo
-              </LinkButton>
+                  <svg
+                    class="size-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  class="gallery-next absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
+                  aria-label="Siguiente"
+                >
+                  <svg
+                    class="size-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            ) : (
+              <img
+                alt={`Proyecto: ${title}`}
+                class="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                src={image}
+              />
             )}
-            {link && (
-              <LinkButton href={link}>
-                <Link class="size-4" />
-                Visitar
-              </LinkButton>
-            )}
-          </footer>
-        </div>
-      </article>
-    ))
+            <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent opacity-60 pointer-events-none" />
+
+            {/* Hover overlay with links */}
+            <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 backdrop-blur-sm">
+              {github && (
+                <a
+                  href={github}
+                  target="_blank"
+                  rel="noopener"
+                  class="p-3 rounded-full bg-black text-white border border-white/20 hover:bg-white hover:text-black hover:scale-110 transition-all duration-200"
+                  aria-label="Ver código en GitHub"
+                >
+                  <Github class="size-5" />
+                </a>
+              )}
+              {link && (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener"
+                  class="p-3 rounded-full bg-black text-white border border-white/20 hover:bg-white hover:text-black hover:scale-110 transition-all duration-200"
+                  aria-label="Visitar sitio"
+                >
+                  <ExternalLink class="size-5" />
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Content */}
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-[var(--color-text-primary)] mb-2">
+              {title}
+            </h3>
+
+            {/* Tags */}
+            <ul class="flex flex-wrap gap-1.5 mb-3">
+              {tags.map((tag) => (
+                <li>
+                  <span
+                    class={`inline-flex items-center rounded-full text-[11px] font-medium px-2.5 py-0.5 border ${tag.class}`}
+                  >
+                    {tag.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Description with "Leer más" */}
+            <div class="project-desc-wrapper">
+              <p class="project-desc text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3">
+                {description}
+              </p>
+              <button class="read-more-btn mt-2 inline-flex items-center gap-1 text-xs font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-secondary)] transition-colors">
+                <span class="read-more-text">Leer más</span>
+                <ChevronDown class="size-3.5 read-more-icon transition-transform duration-200" />
+              </button>
+            </div>
+
+            {/* Bottom links */}
+            <div class="flex items-center gap-3 mt-4 pt-4 border-t border-[var(--color-border)]">
+              {github && (
+                <LinkButton href={github}>
+                  <Github class="size-4" />
+                  Código
+                </LinkButton>
+              )}
+              {link && (
+                <LinkButton href={link}>
+                  <ExternalLink class="size-4" />
+                  Visitar
+                </LinkButton>
+              )}
+            </div>
+          </div>
+        </article>
+      ),
+    )
   }
 </div>
+
+<script is:inline>
+  function initProjects() {
+    // "Leer más" toggle
+    document.querySelectorAll(".read-more-btn").forEach(function (btn) {
+      // Avoid duplicate listeners
+      if (btn.dataset.init) return;
+      btn.dataset.init = "true";
+
+      btn.addEventListener("click", function () {
+        var wrapper = btn.closest(".project-desc-wrapper");
+        var desc = wrapper ? wrapper.querySelector(".project-desc") : null;
+        var text = btn.querySelector(".read-more-text");
+        var icon = btn.querySelector(".read-more-icon");
+
+        if (!desc) return;
+
+        var isClamped = desc.classList.contains("line-clamp-3");
+
+        if (isClamped) {
+          desc.classList.remove("line-clamp-3");
+          desc.style.display = "block";
+          desc.style.webkitLineClamp = "unset";
+          desc.style.overflow = "visible";
+          if (text) text.textContent = "Leer menos";
+          if (icon) icon.style.transform = "rotate(180deg)";
+        } else {
+          desc.classList.add("line-clamp-3");
+          desc.style.display = "";
+          desc.style.webkitLineClamp = "";
+          desc.style.overflow = "";
+          if (text) text.textContent = "Leer más";
+          if (icon) icon.style.transform = "";
+        }
+      });
+    });
+
+    // Image gallery navigation
+    document.querySelectorAll(".project-gallery").forEach(function (gallery) {
+      if (gallery.dataset.init) return;
+      gallery.dataset.init = "true";
+
+      var imgs = gallery.querySelectorAll("[data-gallery-img]");
+      var dots = gallery.querySelectorAll(".gallery-dot");
+      var prevBtn = gallery.querySelector(".gallery-prev");
+      var nextBtn = gallery.querySelector(".gallery-next");
+      var current = 0;
+      var total = imgs.length;
+
+      function showSlide(idx) {
+        current = ((idx % total) + total) % total;
+        imgs.forEach(function (img, i) {
+          img.classList.toggle("opacity-100", i === current);
+          img.classList.toggle("opacity-0", i !== current);
+        });
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle("bg-white", i === current);
+          dot.classList.toggle("scale-125", i === current);
+          dot.classList.toggle("bg-white/40", i !== current);
+        });
+      }
+
+      if (prevBtn)
+        prevBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          showSlide(current - 1);
+        });
+      if (nextBtn)
+        nextBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          showSlide(current + 1);
+        });
+      dots.forEach(function (dot, i) {
+        dot.addEventListener("click", function (e) {
+          e.stopPropagation();
+          showSlide(i);
+        });
+      });
+    });
+  }
+
+  // Run on initial load and on Astro page transitions
+  document.addEventListener("DOMContentLoaded", initProjects);
+  document.addEventListener("astro:page-load", initProjects);
+  // Also run immediately in case DOMContentLoaded already fired
+  if (document.readyState !== "loading") initProjects();
+</script>

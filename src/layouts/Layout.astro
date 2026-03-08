@@ -4,6 +4,7 @@ import "@fontsource-variable/onest";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+
 interface Props {
   title: string;
   description: string;
@@ -13,61 +14,79 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <link rel="icon" type="image/svg+xml" href="/-logo-.ico" />
     <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0d17" />
 
     <title>{title}</title>
     <ViewTransitions />
   </head>
 
-  <body class="">
+  <body>
     <Header />
     <slot />
     <Footer />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        const revealElements = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+
     <style is:global>
       :root {
         color-scheme: light dark;
       }
+
       html {
         font-family: "Onest Variable", system-ui, sans-serif;
         scroll-behavior: smooth;
-        background-color: #0a0a0a; /* bg-neutral-950 */
-        background-image: radial-gradient(
-          ellipse 80% 80% at 50% -20%,
-          rgba(58, 28, 113, 1),
-          rgba(0, 9, 29, 1)
-        );
+        background-color: var(--color-bg-primary);
+        background-image: var(--gradient-hero);
         min-height: 100%;
       }
+
       body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        color: var(--color-text-primary);
         overscroll-behavior: none;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
       }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
       }
-      @media (prefers-color-scheme: dark) {
-        body {
-          color: rgba(255, 255, 255, 0.9);
-        }
-      }
 
-      #header-nav {
-        animation: blur linear both 0.5s;
-        animation-timeline: scroll();
-        animation-range: 0 500px;
+      /* Selection color */
+      ::selection {
+        background-color: var(--color-accent);
+        color: white;
       }
     </style>
   </body>
