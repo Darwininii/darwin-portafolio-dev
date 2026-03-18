@@ -204,7 +204,9 @@ const navItems = [
           }
         });
       },
-      { root: null, rootMargin: "0px", threshold: 0.3 },
+      // Usamos un margen negativo para interceptar cuando la sección está en el centro visible de la pantalla
+      // Se elimina el threshold porque en secciones muy altas era matemáticamente imposible llegar a visualizar un 30% de la sección completa.
+      { root: null, rootMargin: "-30% 0px -30% 0px" },
     );
 
     sections.forEach((section) => sectionObserver.observe(section));

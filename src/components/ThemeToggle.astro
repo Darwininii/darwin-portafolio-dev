@@ -7,7 +7,7 @@ import { Sun, Moon } from "@lucide/astro";
   aria-label="Cambiar tema"
 >
   <span class="theme-icon-sun">
-    <Sun class="size-5 text-[var(--color-accent-warm)]" />
+    <Sun class="size-5 text-black dark:text-[var(--color-accent-warm)]" />
   </span>
   <span class="theme-icon-moon hidden">
     <Moon class="size-5 text-[var(--color-accent)]" />
@@ -70,5 +70,14 @@ import { Sun, Moon } from "@lucide/astro";
         applyTheme();
       });
     })();
+  } else {
+    // Si la inicialización ya pasó, solo actualizamos los iconos recién montados (el toggle móvil)
+    var isDark = document.documentElement.classList.contains("dark");
+    document.querySelectorAll(".theme-icon-sun").forEach(function (el) {
+      el.classList.toggle("hidden", isDark);
+    });
+    document.querySelectorAll(".theme-icon-moon").forEach(function (el) {
+      el.classList.toggle("hidden", !isDark);
+    });
   }
 </script>

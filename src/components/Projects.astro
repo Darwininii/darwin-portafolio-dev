@@ -1,55 +1,114 @@
 ---
-import { Github, ExternalLink, ChevronDown } from "@lucide/astro";
+import {
+  SiWordpress,
+  SiJavascript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiAstro,
+  SiFirebase,
+  SiReact,
+  SiTypescript,
+  SiVite,
+  SiSupabase,
+  SiCss,
+  SiGithub,
+} from "react-icons/si";
+import { FaCircleArrowDown } from "react-icons/fa6";
+import { ExternalLink, ChevronDown } from "@lucide/astro";
 import LinkButton from "./LinkButton.astro";
 
 const TAGS = {
   WORDPRESS: {
     name: "WordPress",
-    class: "bg-[#244E8A]/20 text-[#5B9BD5] border-[#244E8A]/30",
+    icon: SiWordpress,
+    class:
+      "bg-[#21759B]/10 dark:bg-[#21759B]/20 text-[#21759B] dark:text-blue-300 border-[#21759B]/20",
   },
   GITHUB: {
     name: "GitHub",
-    class: "bg-white/5 text-[var(--color-text-secondary)] border-white/10",
+    icon: SiGithub,
+    class:
+      "bg-black/5 dark:bg-white/5 text-black dark:text-[var(--color-text-primary)] border-black/10 dark:border-white/10",
   },
   JAVASCRIPT: {
     name: "JavaScript",
-    class: "bg-[#F7DF1E]/10 text-[#F7DF1E] border-[#F7DF1E]/20",
+    icon: SiJavascript,
+    class:
+      "bg-[#F7DF1E]/20 dark:bg-[#F7DF1E]/10 text-[#B4A000] dark:text-[#F7DF1E] border-[#F7DF1E]/30 dark:border-[#F7DF1E]/20",
   },
   TAILWIND: {
     name: "Tailwind",
-    class: "bg-[#38BDF8]/10 text-[#38BDF8] border-[#38BDF8]/20",
+    icon: SiTailwindcss,
+    class:
+      "bg-[#06B6D4]/10 text-[#0891B2] dark:text-[#06B6D4] border-[#06B6D4]/20",
   },
   NEXTJS: {
     name: "Next.js",
-    class: "bg-white/5 text-[var(--color-text-primary)] border-white/10",
+    icon: SiNextdotjs,
+    class:
+      "bg-black/5 dark:bg-white/5 text-black dark:text-[var(--color-text-primary)] border-black/10 dark:border-white/10",
   },
   ASTROICON: {
     name: "Astro",
-    class: "bg-[#BC52EE]/10 text-[#BC52EE] border-[#BC52EE]/20",
+    icon: SiAstro,
+    class:
+      "bg-[#FF5D01]/10 text-[#D04B00] dark:text-[#FF5D01] border-[#FF5D01]/20",
   },
   FIREBASE: {
     name: "Firebase",
-    class: "bg-[#FFCA28]/10 text-[#FFCA28] border-[#FFCA28]/20",
+    icon: SiFirebase,
+    class:
+      "bg-[#FFCA28]/20 dark:bg-[#FFCA28]/10 text-[#D97706] dark:text-[#FFCA28] border-[#FFCA28]/30 dark:border-[#FFCA28]/20",
   },
   REACT: {
     name: "React",
-    class: "bg-[#61DAFB]/10 text-[#61DAFB] border-[#61DAFB]/20",
+    icon: SiReact,
+    class:
+      "bg-[#61DAFB]/20 dark:bg-[#61DAFB]/10 text-[#0284C7] dark:text-[#61DAFB] border-[#61DAFB]/30 dark:border-[#61DAFB]/20",
   },
   TYPESCRIPT: {
     name: "TypeScript",
-    class: "bg-[#3178C6]/10 text-[#3178C6] border-[#3178C6]/20",
+    icon: SiTypescript,
+    class:
+      "bg-[#3178C6]/10 text-[#2563EB] dark:text-blue-400 border-[#3178C6]/20",
   },
   VITE: {
     name: "Vite",
-    class: "bg-[#646CFF]/10 text-[#646CFF] border-[#646CFF]/20",
+    icon: SiVite,
+    class:
+      "bg-[#646CFF]/10 dark:bg-purple-500/10 text-[#4F46E5] dark:text-purple-400 border-[#646CFF]/20",
   },
   SUPABASE: {
     name: "Supabase",
-    class: "bg-[#3ECF8E]/10 text-[#3ECF8E] border-[#3ECF8E]/20",
+    icon: SiSupabase,
+    class:
+      "bg-[#3ECF8E]/10 text-[#059669] dark:text-[#3ECF8E] border-[#3ECF8E]/20",
+  },
+  CSS: {
+    name: "CSS",
+    icon: SiCss,
+    class:
+      "bg-[#1572B6]/10 dark:bg-cyan-500/15 text-[#1572B6] dark:text-blue-300 border-[#1572B6]/20",
   },
 };
 
 const PROJECTS = [
+  {
+    title: "Grupo Colega",
+    description:
+      "Rediseño integral de la página web para Grupo Colega, destacada empresa mexicana de seguridad privada. El proyecto consistió en la migración de su sitio heredado en WordPress a una arquitectura moderna construida desde cero con React y Vite. Utilizando JavaScript puro y Tailwind CSS, se le otorgó un aire completamente renovado y profesional, incorporando animaciones fluidas que resaltan sus servicios de vigilancia 24/7, custodia corporativa y seguridad electrónica, garantizando una excelente experiencia de usuario.",
+    link: "https://grupo-colega.vercel.app/",
+    image: "/projects/Grupo-Colega.png",
+    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.TAILWIND],
+  },
+  {
+    title: "Zona Forense",
+    description:
+      "Desarrollo de página web corporativa para Zona Forense & Staff Seguridad, enfocada en proyectar la identidad y profesionalismo de la compañía. La plataforma estructura de manera clara su información institucional, abarcando su misión, visión y áreas de especialidad como Investigaciones, Pruebas Periciales, Informática Forense y Representación Legal. Construida en WordPress y complementada con estilos personalizados en CSS, asegurando una experiencia de usuario fluida, moderna y un diseño responsivo.",
+    link: "https://www.zonaforense.com/",
+    image: "/projects/Zona_Forense-01.png",
+    tags: [TAGS.WORDPRESS, TAGS.CSS],
+  },
   {
     title: "Darwinini Ecommerce",
     description:
@@ -58,7 +117,14 @@ const PROJECTS = [
     github: "https://github.com/Darwininii/Alma-Cafe.git",
     image: "/projects/ecommerce.png",
     images: ["/projects/ecommerce.png", "/projects/ecommerce-2.png"],
-    tags: [TAGS.REACT, TAGS.VITE, TAGS.TAILWIND, TAGS.SUPABASE],
+    tags: [
+      TAGS.REACT,
+      TAGS.TYPESCRIPT,
+      TAGS.VITE,
+      TAGS.TAILWIND,
+      TAGS.SUPABASE,
+      TAGS.GITHUB,
+    ],
   },
   {
     title: "AireTec",
@@ -84,7 +150,7 @@ const PROJECTS = [
       "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio.",
     link: "https://restauranteinsignia.com/",
     image: "/projects/Insignia.webp",
-    tags: [TAGS.WORDPRESS],
+    tags: [TAGS.WORDPRESS, TAGS.CSS],
   },
   {
     title: "AutoSinergia",
@@ -92,7 +158,7 @@ const PROJECTS = [
       "Desarrollo y mantenimiento de la página web para AutoSinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio.",
     link: "https://autosinergia.com/",
     image: "/projects/AutoSinergia.webp",
-    tags: [TAGS.WORDPRESS],
+    tags: [TAGS.WORDPRESS, TAGS.CSS],
   },
   {
     title: "QR-Generator",
@@ -119,8 +185,8 @@ const PROJECTS = [
     PROJECTS.map(
       ({ title, description, image, images, tags, link, github }, i) => (
         <article
-          class="group glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_var(--color-glow)] hover:border-[var(--color-accent)]/20 hover:-translate-y-1 reveal"
-          style={`animation-delay: ${i * 100}ms`}
+          class={`group glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_var(--color-glow)] hover:border-[var(--color-accent)]/20 hover:-translate-y-1 project-card reveal ${i >= 6 ? "hidden" : ""}`}
+          style={`animation-delay: ${i < 6 ? i * 100 : 0}ms`}
         >
           {/* Image — if multiple images, show a gallery */}
           <div class="relative overflow-hidden aspect-video">
@@ -198,7 +264,7 @@ const PROJECTS = [
                   class="p-3 rounded-full bg-black text-white border border-white/20 hover:bg-white hover:text-black hover:scale-110 transition-all duration-200"
                   aria-label="Ver código en GitHub"
                 >
-                  <Github class="size-5" />
+                  <SiGithub size={14} />
                 </a>
               )}
               {link && (
@@ -223,15 +289,19 @@ const PROJECTS = [
 
             {/* Tags */}
             <ul class="flex flex-wrap gap-1.5 mb-3">
-              {tags.map((tag) => (
-                <li>
-                  <span
-                    class={`inline-flex items-center rounded-full text-[11px] font-medium px-2.5 py-0.5 border ${tag.class}`}
-                  >
-                    {tag.name}
-                  </span>
-                </li>
-              ))}
+              {tags.map((tag) => {
+                const Icon = tag.icon;
+                return (
+                  <li>
+                    <span
+                      class={`inline-flex items-center gap-1.5 rounded-full text-[11px] font-medium px-2.5 py-0.5 border ${tag.class}`}
+                    >
+                      <Icon size={14} />
+                      {tag.name}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
 
             {/* Description with "Leer más" */}
@@ -249,7 +319,7 @@ const PROJECTS = [
             <div class="flex items-center gap-3 mt-4 pt-4 border-t border-[var(--color-border)]">
               {github && (
                 <LinkButton href={github}>
-                  <Github class="size-4" />
+                  <SiGithub size={14} />
                   Código
                 </LinkButton>
               )}
@@ -267,8 +337,62 @@ const PROJECTS = [
   }
 </div>
 
+{
+  PROJECTS.length > 6 && (
+    <div
+      id="show-more-container"
+      class="flex flex-col items-center mt-12 gap-2 reveal transition-all duration-500"
+      style="animation-delay: 200ms;"
+    >
+      {/* 3 dots */}
+      <div class="flex flex-col gap-2 mb-3 items-center">
+        <div class="size-[7px] rounded-full bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-glow-strong)] ring-[3px] ring-black/15 dark:ring-white/20 opacity-40" />
+        <div class="size-[9px] rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_var(--color-glow-strong)] ring-[3px] ring-black/15 dark:ring-white/20 opacity-70" />
+        <div class="size-[12px] rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_var(--color-glow-strong)] ring-[4px] ring-black/15 dark:ring-white/20" />
+      </div>
+
+      {/* Button */}
+      <button
+        id="btn-show-more"
+        class="flex flex-col items-center gap-2 text-[var(--color-accent)] hover:text-[var(--color-accent-secondary)] group transition-all duration-300 cursor-pointer"
+        aria-label="Ver más proyectos"
+      >
+        <span class="transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110">
+          <FaCircleArrowDown size={30} />
+        </span>
+        <span class="text-sm font-semibold tracking-wider uppercase mt-1">
+          Ver más proyectos
+        </span>
+      </button>
+    </div>
+  )
+}
+
 <script is:inline>
   function initProjects() {
+    // Show More Projects logic
+    var showMoreBtn = document.getElementById("btn-show-more");
+    var container = document.getElementById("show-more-container");
+    if (showMoreBtn && !showMoreBtn.dataset.init) {
+      showMoreBtn.dataset.init = "true";
+      showMoreBtn.addEventListener("click", function () {
+        var hiddenCards = document.querySelectorAll(".project-card.hidden");
+        hiddenCards.forEach(function (card, idx) {
+          card.classList.remove("hidden");
+          setTimeout(function () {
+            card.style.animationDelay = idx * 100 + "ms";
+          }, 10);
+        });
+        if (container) {
+          container.style.opacity = "0";
+          container.style.transform = "translateY(-20px)";
+          setTimeout(function () {
+            container.style.display = "none";
+          }, 300);
+        }
+      });
+    }
+
     // "Leer más" toggle
     document.querySelectorAll(".read-more-btn").forEach(function (btn) {
       // Avoid duplicate listeners
