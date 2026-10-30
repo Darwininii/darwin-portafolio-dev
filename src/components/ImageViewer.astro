@@ -1,0 +1,238 @@
+---
+import { X, ChevronLeft, ChevronRight } from "@lucide/astro";
+---
+
+<!-- Visualizador de Imagen (Modal / Lightbox) -->
+<div
+  id="image-viewer-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-md transition-opacity duration-300 opacity-0 p-4 sm:p-6"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Visualizador de imagen"
+>
+  <!-- Barra superior -->
+  <div
+    class="absolute top-4 left-4 right-4 z-30 flex items-center justify-between pointer-events-none"
+  >
+    <div
+      class="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-white pointer-events-auto shadow-lg max-w-[80vw]"
+    >
+      <span id="image-viewer-title" class="text-xs sm:text-sm font-semibold truncate"></span>
+      <span
+        id="image-viewer-counter"
+        class="text-[11px] font-medium text-white/80 px-2 py-0.5 rounded-full bg-white/15 hidden"
+      ></span>
+    </div>
+
+    <!-- Botón Cerrar -->
+    <button
+      id="image-viewer-close"
+      class="p-2.5 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white border border-white/20 transition-all duration-200 hover:scale-110 pointer-events-auto cursor-pointer shadow-lg"
+      aria-label="Cerrar visualizador (Esc)"
+      title="Cerrar (Esc)"
+    >
+      <X class="size-6" />
+    </button>
+  </div>
+
+  <!-- Botones Anterior / Siguiente para proyectos con galería -->
+  <button
+    id="image-viewer-prev"
+    class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white border border-white/20 transition-all duration-200 hover:scale-110 cursor-pointer shadow-lg hidden"
+    aria-label="Imagen anterior (Flecha izquierda)"
+    title="Anterior"
+  >
+    <ChevronLeft class="size-6 sm:size-7" />
+  </button>
+
+  <button
+    id="image-viewer-next"
+    class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3 rounded-full bg-white/10 hover:bg-white/25 active:scale-95 text-white border border-white/20 transition-all duration-200 hover:scale-110 cursor-pointer shadow-lg hidden"
+    aria-label="Imagen siguiente (Flecha derecha)"
+    title="Siguiente"
+  >
+    <ChevronRight class="size-6 sm:size-7" />
+  </button>
+
+  <!-- Contenedor de la Imagen ampliada -->
+  <div
+    id="image-viewer-content"
+    class="relative max-w-full max-h-full flex items-center justify-center p-2 select-none"
+  >
+    <img
+      id="image-viewer-img"
+      src=""
+      alt="Vista ampliada del proyecto"
+      class="max-w-[92vw] max-h-[85vh] w-auto h-auto object-contain rounded-xl shadow-2xl transition-all duration-300 scale-95 opacity-0 border border-white/10"
+    />
+  </div>
+</div>
+
+<script is:inline>
+  if (!window.__imageViewerInit) {
+    window.__imageViewerInit = true;
+
+    function initImageViewer() {
+      var modal = document.getElementById("image-viewer-modal");
+      var modalImg = document.getElementById("image-viewer-img");
+      var modalTitle = document.getElementById("image-viewer-title");
+      var modalCounter = document.getElementById("image-viewer-counter");
+      var modalClose = document.getElementById("image-viewer-close");
+      var modalPrev = document.getElementById("image-viewer-prev");
+      var modalNext = document.getElementById("image-viewer-next");
+
+      var currentImages = [];
+      var currentIndex = 0;
+
+      function renderModalImage() {
+        if (!currentImages.length || !modalImg) return;
+        modalImg.classList.remove("scale-100", "opacity-100");
+        modalImg.classList.add("scale-95", "opacity-0");
+
+        setTimeout(function () {
+          modalImg.src = currentImages[currentIndex];
+          modalImg.alt =
+            (modalTitle ? modalTitle.textContent : "Proyecto") +
+            " - " +
+            (currentIndex + 1);
+
+          modalImg.onload = function () {
+            modalImg.classList.remove("scale-95", "opacity-0");
+            modalImg.classList.add("scale-100", "opacity-100");
+          };
+          if (modalImg.complete) {
+            modalImg.classList.remove("scale-95", "opacity-0");
+            modalImg.classList.add("scale-100", "opacity-100");
+          }
+        }, 120);
+
+        if (currentImages.length > 1) {
+          if (modalCounter) {
+            modalCounter.textContent =
+              currentIndex + 1 + " / " + currentImages.length;
+            modalCounter.classList.remove("hidden");
+          }
+          if (modalPrev) modalPrev.classList.remove("hidden");
+          if (modalNext) modalNext.classList.remove("hidden");
+        } else {
+          if (modalCounter) modalCounter.classList.add("hidden");
+          if (modalPrev) modalPrev.classList.add("hidden");
+          if (modalNext) modalNext.classList.add("hidden");
+        }
+      }
+
+      function openViewer(title, images, initialIndex) {
+        if (!modal || !images || !images.length) return;
+        currentImages = images;
+        currentIndex = initialIndex || 0;
+        if (modalTitle) modalTitle.textContent = title || "";
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+
+        requestAnimationFrame(function () {
+          modal.classList.remove("opacity-0");
+          modal.classList.add("opacity-100");
+        });
+
+        renderModalImage();
+      }
+
+      function closeViewer() {
+        if (!modal) return;
+        modal.classList.remove("opacity-100");
+        modal.classList.add("opacity-0");
+        if (modalImg) {
+          modalImg.classList.remove("scale-100", "opacity-100");
+          modalImg.classList.add("scale-95", "opacity-0");
+        }
+
+        setTimeout(function () {
+          modal.classList.remove("flex");
+          modal.classList.add("hidden");
+          if (modalImg) modalImg.src = "";
+          document.body.style.overflow = "";
+        }, 250);
+      }
+
+      if (modal && !modal.dataset.init) {
+        modal.dataset.init = "true";
+
+        if (modalClose) {
+          modalClose.addEventListener("click", closeViewer);
+        }
+
+        if (modalPrev) {
+          modalPrev.addEventListener("click", function (e) {
+            e.stopPropagation();
+            currentIndex =
+              (currentIndex - 1 + currentImages.length) % currentImages.length;
+            renderModalImage();
+          });
+        }
+
+        if (modalNext) {
+          modalNext.addEventListener("click", function (e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            renderModalImage();
+          });
+        }
+
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal || e.target.id === "image-viewer-content") {
+            closeViewer();
+          }
+        });
+
+        window.addEventListener("keydown", function (e) {
+          if (!modal || modal.classList.contains("hidden")) return;
+          if (e.key === "Escape") {
+            closeViewer();
+          } else if (e.key === "ArrowLeft" && currentImages.length > 1) {
+            currentIndex =
+              (currentIndex - 1 + currentImages.length) % currentImages.length;
+            renderModalImage();
+          } else if (e.key === "ArrowRight" && currentImages.length > 1) {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            renderModalImage();
+          }
+        });
+      }
+
+      // Attach click handlers to project image containers
+      document.querySelectorAll(".project-image-container").forEach(function (box) {
+        if (box.dataset.hasViewer) return;
+        box.dataset.hasViewer = "true";
+
+        box.addEventListener("click", function (e) {
+          if (
+            e.target.closest(".gallery-prev") ||
+            e.target.closest(".gallery-next") ||
+            e.target.closest(".gallery-dot")
+          ) {
+            return;
+          }
+          var title = box.dataset.title;
+          var images = [];
+          try {
+            images = JSON.parse(box.dataset.images || "[]");
+          } catch (err) {
+            images = [];
+          }
+          var gallery = box.querySelector(".project-gallery");
+          var initialIndex = 0;
+          if (gallery && gallery.dataset.current) {
+            initialIndex = parseInt(gallery.dataset.current, 10) || 0;
+          }
+          openViewer(title, images, initialIndex);
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", initImageViewer);
+    document.addEventListener("astro:page-load", initImageViewer);
+    if (document.readyState !== "loading") initImageViewer();
+  }
+</script>

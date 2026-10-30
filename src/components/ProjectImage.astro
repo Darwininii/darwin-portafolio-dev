@@ -1,0 +1,168 @@
+---
+import { ZoomIn } from "@lucide/astro";
+
+interface Props {
+  title: string;
+  image?: string;
+  images?: string[];
+}
+
+const { title, image, images } = Astro.props;
+const allImages =
+  images && images.length > 0
+    ? images
+    : image
+      ? [image]
+      : [];
+
+const singleImg = image || (allImages.length > 0 ? allImages[0] : "");
+const hasMultipleImages = allImages.length > 1;
+---
+
+<div
+  class="project-image-container relative overflow-hidden aspect-video cursor-zoom-in group/img"
+  data-title={title}
+  data-images={JSON.stringify(allImages)}
+>
+  {
+    hasMultipleImages ? (
+      <div class="project-gallery relative w-full h-full" data-current="0">
+        {allImages.map((img, idx) => (
+          <img
+            alt={`Proyecto: ${title} - ${idx + 1}`}
+            class={`absolute inset-0 object-cover object-top w-full h-full transition-all duration-700 group-hover/img:scale-105 ${idx === 0 ? "opacity-100" : "opacity-0"}`}
+            data-gallery-img={idx.toString()}
+            loading="lazy"
+            src={img}
+          />
+        ))}
+
+        {/* Gallery dots */}
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {allImages.map((_, idx) => (
+            <button
+              class={`gallery-dot size-2 rounded-full transition-all ${idx === 0 ? "bg-white scale-125" : "bg-white/40"}`}
+              data-dot={idx.toString()}
+              aria-label={`Imagen ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Nav arrows */}
+        <button
+          class="gallery-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors opacity-0 group-hover/img:opacity-100"
+          aria-label="Anterior"
+        >
+          <svg
+            class="size-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <button
+          class="gallery-next absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors opacity-0 group-hover/img:opacity-100"
+          aria-label="Siguiente"
+        >
+          <svg
+            class="size-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </div>
+    ) : (
+      <img
+        alt={`Proyecto: ${title}`}
+        class="object-cover object-top w-full h-full transition-transform duration-700 group-hover/img:scale-105"
+        loading="lazy"
+        src={singleImg}
+      />
+    )
+  }
+
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent opacity-60 pointer-events-none"
+  >
+  </div>
+
+  {/* Hover overlay: visual cue for image viewer */}
+  <div
+    class="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-0 group-hover/img:opacity-100 transition-all duration-300 bg-black/45 backdrop-blur-[2px] pointer-events-none"
+  >
+    <div
+      class="p-3 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white shadow-xl transform transition-transform duration-300 group-hover/img:scale-110"
+    >
+      <ZoomIn class="size-6" />
+    </div>
+    <span
+      class="text-xs font-medium text-white tracking-wide uppercase px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 shadow-sm"
+    >
+      Ampliar imagen
+    </span>
+  </div>
+</div>
+
+<script is:inline>
+  if (!window.__projectGalleryInit) {
+    window.__projectGalleryInit = true;
+
+    function initProjectGalleries() {
+      document.querySelectorAll(".project-gallery").forEach(function (gallery) {
+        if (gallery.dataset.init) return;
+        gallery.dataset.init = "true";
+
+        var imgs = gallery.querySelectorAll("[data-gallery-img]");
+        var dots = gallery.querySelectorAll(".gallery-dot");
+        var prevBtn = gallery.querySelector(".gallery-prev");
+        var nextBtn = gallery.querySelector(".gallery-next");
+        var current = 0;
+        var total = imgs.length;
+
+        function showSlide(idx) {
+          current = ((idx % total) + total) % total;
+          gallery.dataset.current = current.toString();
+          imgs.forEach(function (img, i) {
+            img.classList.toggle("opacity-100", i === current);
+            img.classList.toggle("opacity-0", i !== current);
+          });
+          dots.forEach(function (dot, i) {
+            dot.classList.toggle("bg-white", i === current);
+            dot.classList.toggle("scale-125", i === current);
+            dot.classList.toggle("bg-white/40", i !== current);
+          });
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showSlide(current - 1);
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showSlide(current + 1);
+          });
+        }
+        dots.forEach(function (dot, i) {
+          dot.addEventListener("click", function (e) {
+            e.stopPropagation();
+            showSlide(i);
+          });
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", initProjectGalleries);
+    document.addEventListener("astro:page-load", initProjectGalleries);
+    if (document.readyState !== "loading") initProjectGalleries();
+  }
+</script>

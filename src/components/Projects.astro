@@ -16,6 +16,8 @@ import {
 import { FaCircleArrowDown } from "react-icons/fa6";
 import { ExternalLink, ChevronDown } from "@lucide/astro";
 import LinkButton from "./LinkButton.astro";
+import ProjectImage from "./ProjectImage.astro";
+import ImageViewer from "./ImageViewer.astro";
 
 const TAGS = {
   WORDPRESS: {
@@ -94,19 +96,45 @@ const TAGS = {
 
 const PROJECTS = [
   {
+    title: "Sange - ERP",
+    description:
+      "Sistema de planificación de recursos empresariales (ERP) integral desarrollado para optimizar la gestión operativa y comercial. Incluye módulos para control de inventario, ventas, administración de clientes, reportes analíticos y autenticación segura con roles de usuario. Construido con React y Vite para una experiencia fluida y reactiva, diseñado con Tailwind CSS y respaldado por Supabase como backend.",
+    link: "https://sange-demo.vercel.app/",
+    github: "https://github.com/Darwininii/sange",
+    images: ["/projects/Sange_ERP.png", "/projects/Sange_ERP_1.png"],
+    tags: [
+      TAGS.REACT,
+      TAGS.JAVASCRIPT,
+      TAGS.VITE,
+      TAGS.TAILWIND,
+      TAGS.SUPABASE,
+      TAGS.GITHUB,
+    ],
+  },
+  {
+    title: "Law Office - Abogados",
+    description:
+      "Creación de una página web moderna para un bufete de abogados, diseñada con React, TypeScript y Tailwind CSS. El proyecto se centró en ofrecer una interfaz limpia, profesional y responsiva para presentar los servicios legales del bufete, destacando su experiencia, servicios y áreas de especialización.",
+    link: "https://demo-lawoffice.vercel.app/",
+    github: "https://github.com/Darwininii/law_office",
+    image: "/projects/Law_Office.png",
+    tags: [TAGS.REACT, TAGS.VITE, TAGS.TAILWIND, TAGS.GITHUB],
+  },
+  {
     title: "Grupo Colega",
     description:
       "Rediseño integral de la página web para Grupo Colega, destacada empresa mexicana de seguridad privada. El proyecto consistió en la migración de su sitio heredado en WordPress a una arquitectura moderna construida desde cero con React y Vite. Utilizando JavaScript puro y Tailwind CSS, se le otorgó un aire completamente renovado y profesional, incorporando animaciones fluidas que resaltan sus servicios de vigilancia 24/7, custodia corporativa y seguridad electrónica, garantizando una excelente experiencia de usuario.",
     link: "https://grupo-colega.vercel.app/",
-    image: "/projects/Grupo-Colega.png",
-    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.TAILWIND],
+    github: "https://github.com/Darwininii/Grupo-Colega",
+    images: ["/projects/Grupo_Colega.png", "/projects/Grupo_Colega_1.png"],
+    tags: [TAGS.REACT, TAGS.JAVASCRIPT, TAGS.TAILWIND, TAGS.GITHUB],
   },
   {
     title: "Zona Forense",
     description:
       "Desarrollo de página web corporativa para Zona Forense & Staff Seguridad, enfocada en proyectar la identidad y profesionalismo de la compañía. La plataforma estructura de manera clara su información institucional, abarcando su misión, visión y áreas de especialidad como Investigaciones, Pruebas Periciales, Informática Forense y Representación Legal. Construida en WordPress y complementada con estilos personalizados en CSS, asegurando una experiencia de usuario fluida, moderna y un diseño responsivo.",
     link: "https://www.zonaforense.com/",
-    image: "/projects/Zona_Forense-01.png",
+    image: "/projects/Zona_Forense.png",
     tags: [TAGS.WORDPRESS, TAGS.CSS],
   },
   {
@@ -115,8 +143,12 @@ const PROJECTS = [
       "Desarrollé una aplicación de Ecommerce (comercio electrónico) como proyecto personal, con el objetivo de poner en práctica mis conocimientos en desarrollo web fullstack. La plataforma cuenta con un sistema de autenticación de usuarios, catálogo de productos con filtros y búsqueda avanzada, carrito de compras interactivo, integración de pasarela de pagos, panel de administración para gestión de inventario y pedidos, y un diseño responsivo optimizado para todo tipo de dispositivos. Construida con React y Vite para un rendimiento ultrarrápido, estilizada con Tailwind CSS y respaldada por Supabase como backend.",
     link: "https://darwinini-ecommerce.vercel.app/",
     github: "https://github.com/Darwininii/Alma-Cafe.git",
-    image: "/projects/ecommerce.png",
-    images: ["/projects/ecommerce.png", "/projects/ecommerce-2.png"],
+    images: [
+      "/projects/Darw_Ecomm.png",
+      "/projects/Darw_Ecomm_2.png",
+      "/projects/Darw_Ecomm_3.png",
+      "/projects/Darw_Ecomm_4.png",
+    ],
     tags: [
       TAGS.REACT,
       TAGS.TYPESCRIPT,
@@ -132,7 +164,7 @@ const PROJECTS = [
       "Desarrollo de una pagina de presentación para la empresa AireTec, dedicada a la venta e instalación de aires acondicionados. La página web fue creada utilizando Next.js y Tailwind CSS para asegurar una experiencia de usuario moderna y responsiva.",
     link: "https://aire-tec-darw.vercel.app/",
     github: "https://github.com/Darwininii/AireTec-main",
-    image: "/projects/AireTec.webp",
+    image: "/projects/AireTec.png",
     tags: [TAGS.REACT, TAGS.NEXTJS, TAGS.TYPESCRIPT, TAGS.TAILWIND],
   },
   {
@@ -141,7 +173,7 @@ const PROJECTS = [
       "Desarrollo de una pagina web para generar Código QR. Ya había realizado un proyecto similar anteriormente, sin embargo queria mejorar la interfaz visual, la experiencia y usar Studio.Firebase como una manera rapida de la creacion de una pagina web.",
     link: "https://qr-darw.vercel.app/",
     github: "https://github.com/Darwininii/QR-Darw",
-    image: "/projects/QR-Darwin.webp",
+    image: "/projects/QR_Darwin.png",
     tags: [TAGS.REACT, TAGS.NEXTJS, TAGS.TYPESCRIPT, TAGS.TAILWIND],
   },
   {
@@ -149,30 +181,22 @@ const PROJECTS = [
     description:
       "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio.",
     link: "https://restauranteinsignia.com/",
-    image: "/projects/Insignia.webp",
+    images: ["/projects/Insignia.png", "/projects/Insignia_2.png"],
     tags: [TAGS.WORDPRESS, TAGS.CSS],
   },
   {
-    title: "AutoSinergia",
+    title: "Auto Sinergia",
     description:
-      "Desarrollo y mantenimiento de la página web para AutoSinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio.",
+      "Desarrollo y mantenimiento de la página web para Auto Sinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio.",
     link: "https://autosinergia.com/",
-    image: "/projects/AutoSinergia.webp",
+    images: ["/projects/Auto_Sinergia.png", "/projects/Auto_Sinergia_2.png"],
     tags: [TAGS.WORDPRESS, TAGS.CSS],
-  },
-  {
-    title: "QR-Generator",
-    description:
-      "Desarrollo de un generador de códigos QR utilizando JavaScript en Next.js.",
-    link: "https://qr-generator-chi-eight.vercel.app/",
-    github: "https://github.com/Darwininii/qr-generator",
-    image: "/projects/QR-Generator.webp",
-    tags: [TAGS.GITHUB, TAGS.JAVASCRIPT, TAGS.TAILWIND, TAGS.NEXTJS],
   },
   {
     title: "Portafolio",
     description:
-      "Desarrollo de mi portafolio personal utilizando Astro y Tailwind CSS para mostrar mis proyectos y habilidades como desarrollador web.",
+      "Desarrollo de mi portafolio personal utilizando Astro y Tailwind CSS para mostrar mis proyectos y habilidades como desarrollador web. Como página principal, elegí un enfoque minimalista pero elegante, con una landing page limpia que incluye una sección de proyectos, información sobre mí y un formulario de contacto.",
+    link: "https://darwinini-dev.onrender.com/",
     github: "https://github.com/Darwininii/darwin-portafolio-dev.git",
     image: "/projects/Portafolio.webp",
     tags: [TAGS.GITHUB, TAGS.TAILWIND, TAGS.ASTROICON],
@@ -188,98 +212,8 @@ const PROJECTS = [
           class={`group glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_var(--color-glow)] hover:border-[var(--color-accent)]/20 hover:-translate-y-1 project-card reveal ${i >= 6 ? "hidden" : ""}`}
           style={`animation-delay: ${i < 6 ? i * 100 : 0}ms`}
         >
-          {/* Image — if multiple images, show a gallery */}
-          <div class="relative overflow-hidden aspect-video">
-            {images && images.length > 1 ? (
-              <div
-                class="project-gallery relative w-full h-full"
-                data-current="0"
-              >
-                {images.map((img, idx) => (
-                  <img
-                    alt={`Proyecto: ${title} - ${idx + 1}`}
-                    class={`absolute inset-0 object-cover object-top w-full h-full transition-opacity duration-500 ${idx === 0 ? "opacity-100" : "opacity-0"}`}
-                    data-gallery-img={idx.toString()}
-                    loading="lazy"
-                    src={img}
-                  />
-                ))}
-                {/* Gallery dots */}
-                <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                  {images.map((_, idx) => (
-                    <button
-                      class={`gallery-dot size-2 rounded-full transition-all ${idx === 0 ? "bg-white scale-125" : "bg-white/40"}`}
-                      data-dot={idx.toString()}
-                      aria-label={`Imagen ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-                {/* Nav arrows */}
-                <button
-                  class="gallery-prev absolute left-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
-                  aria-label="Anterior"
-                >
-                  <svg
-                    class="size-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  class="gallery-next absolute right-2 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-black/50 text-white hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
-                  aria-label="Siguiente"
-                >
-                  <svg
-                    class="size-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
-            ) : (
-              <img
-                alt={`Proyecto: ${title}`}
-                class="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-                src={image}
-              />
-            )}
-            <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent opacity-60 pointer-events-none" />
-
-            {/* Hover overlay with links */}
-            <div class="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/80 backdrop-blur-sm">
-              {github && (
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener"
-                  class="p-3 rounded-full bg-black text-white border border-white/20 hover:bg-white hover:text-black hover:scale-110 transition-all duration-200"
-                  aria-label="Ver código en GitHub"
-                >
-                  <SiGithub size={14} />
-                </a>
-              )}
-              {link && (
-                <a
-                  href={link}
-                  target="_blank"
-                  rel="noopener"
-                  class="p-3 rounded-full bg-black text-white border border-white/20 hover:bg-white hover:text-black hover:scale-110 transition-all duration-200"
-                  aria-label="Visitar sitio"
-                >
-                  <ExternalLink class="size-5" />
-                </a>
-              )}
-            </div>
-          </div>
+          {/* Image — Click to view in full size */}
+          <ProjectImage title={title} image={image} images={images} />
 
           {/* Content */}
           <div class="p-5">
@@ -368,6 +302,8 @@ const PROJECTS = [
   )
 }
 
+<ImageViewer />
+
 <script is:inline>
   function initProjects() {
     // Show More Projects logic
@@ -424,49 +360,6 @@ const PROJECTS = [
           if (text) text.textContent = "Leer más";
           if (icon) icon.style.transform = "";
         }
-      });
-    });
-
-    // Image gallery navigation
-    document.querySelectorAll(".project-gallery").forEach(function (gallery) {
-      if (gallery.dataset.init) return;
-      gallery.dataset.init = "true";
-
-      var imgs = gallery.querySelectorAll("[data-gallery-img]");
-      var dots = gallery.querySelectorAll(".gallery-dot");
-      var prevBtn = gallery.querySelector(".gallery-prev");
-      var nextBtn = gallery.querySelector(".gallery-next");
-      var current = 0;
-      var total = imgs.length;
-
-      function showSlide(idx) {
-        current = ((idx % total) + total) % total;
-        imgs.forEach(function (img, i) {
-          img.classList.toggle("opacity-100", i === current);
-          img.classList.toggle("opacity-0", i !== current);
-        });
-        dots.forEach(function (dot, i) {
-          dot.classList.toggle("bg-white", i === current);
-          dot.classList.toggle("scale-125", i === current);
-          dot.classList.toggle("bg-white/40", i !== current);
-        });
-      }
-
-      if (prevBtn)
-        prevBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          showSlide(current - 1);
-        });
-      if (nextBtn)
-        nextBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          showSlide(current + 1);
-        });
-      dots.forEach(function (dot, i) {
-        dot.addEventListener("click", function (e) {
-          e.stopPropagation();
-          showSlide(i);
-        });
       });
     });
   }
