@@ -1,7 +1,7 @@
 ---
 const personalImageAlt = "Darwin Niño Escorcia";
 import Badge from "./Badge.astro";
-import { Linkedin, Github, Mail } from "@lucide/astro";
+import { Linkedin, Github, ContactRound } from "@lucide/astro";
 import SocialPill from "./SocialPill.astro";
 ---
 
@@ -51,12 +51,13 @@ import SocialPill from "./SocialPill.astro";
     Desarrollador y Diseñador web. Apasionado por la tecnología y el aprendizaje continuo.
   </p>
 
-  <!-- Social pills -->
   <nav class="flex flex-wrap gap-3 mt-8 animate-fade-in-up animate-delay-600">
-    <SocialPill href="mailto:darwninoe@gmail.com">
-      <Mail class="size-4" />
-      Email
+    <!-- Al empezar con '#', automáticamente se abrirá en la misma ventana (_self) -->
+    <SocialPill href="#contacto">
+      <ContactRound class="size-4" />
+      Contacto
     </SocialPill>
+    <!-- Estos enlaces externos se abrirán en una nueva pestaña (_blank) -->
     <SocialPill href="https://linkedin.com/in/darwin-ni%C3%B1o/">
       <Linkedin class="size-4" />
       LinkedIn

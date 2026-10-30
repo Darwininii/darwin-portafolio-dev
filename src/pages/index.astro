@@ -1,9 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { User, Briefcase, Code2 } from "@lucide/astro";
+import { User, Briefcase, CodeXml, ContactRound } from "@lucide/astro";
 import AboutMe from "../components/AboutMe.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
+import ContactForm from "../components/ContactForm.astro";
 import Container from "../components/Container.astro";
 import Hero from "../components/Hero.astro";
 import TitleSection from "../components/TitleSection.astro";
@@ -42,10 +43,19 @@ import DownloadCV from "../components/DownloadCV.astro";
     <!-- Projects -->
     <Container id="proyectos" class="py-16 md:py-20">
       <TitleSection>
-        <Code2 class="size-7 text-[var(--color-accent)]" />
+        <CodeXml class="size-7 text-[var(--color-accent)]" />
         Proyectos
       </TitleSection>
       <Projects />
+    </Container>
+
+    <!-- Contact Form Section -->
+    <Container id="contacto" class="py-16 md:py-20">
+      <TitleSection>
+        <ContactRound class="size-7 text-[var(--color-accent)]" />
+        Contacto
+      </TitleSection>
+      <ContactForm />
     </Container>
   </main>
 </Layout>
