@@ -1,67 +1,260 @@
 ---
-const personalImageAlt = "Darwin Niño Escorcia";
+import {
+  Layers,
+  Atom,
+  TrendingUp,
+  Terminal,
+  CodeXml,
+  ClipboardList,
+} from "@lucide/astro";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+  SiSupabase,
+  SiAstro,
+  SiWordpress,
+  SiVite,
+} from "react-icons/si";
+
+const personalImageAlt = "Darwin Niño Escorcia - Darwinini";
+
+const CORE_SKILLS = [
+  { name: "React", icon: SiReact, class: "text-[#0284C7] dark:text-[#61DAFB]" },
+  {
+    name: "Next.js",
+    icon: SiNextdotjs,
+    class: "text-zinc-800 dark:text-zinc-200",
+  },
+  {
+    name: "TypeScript",
+    icon: SiTypescript,
+    class: "text-[#2563EB] dark:text-blue-400",
+  },
+  { name: "Astro", icon: SiAstro, class: "text-[#D04B00] dark:text-[#FF5D01]" },
+  {
+    name: "Supabase",
+    icon: SiSupabase,
+    class: "text-[#059669] dark:text-[#3ECF8E]",
+  },
+  {
+    name: "Tailwind CSS",
+    icon: SiTailwindcss,
+    class: "text-[#0891B2] dark:text-[#06B6D4]",
+  },
+  {
+    name: "WordPress",
+    icon: SiWordpress,
+    class: "text-[#21759B] dark:text-blue-300",
+  },
+  { name: "Vite", icon: SiVite, class: "text-[#4F46E5] dark:text-purple-400" },
+];
+
+const HIGHLIGHTS = [
+  {
+    icon: Layers,
+    title: "Desarrollo Full Stack & ERPs",
+    badge: "Sistemas Complejos",
+    description:
+      "Arquitectura y desarrollo de soluciones robustas como ERPs integrales y plataformas E-commerce con autenticación por roles, analíticas, control de inventarios y bases de datos con Supabase y React.",
+  },
+  {
+    icon: Atom,
+    title: "Migraciones & Modernización",
+    badge: "WordPress a React",
+    description:
+      "Transformación y reingeniería de plataformas web heredadas hacia arquitecturas SPA modernas, fluidas y de alto rendimiento, optimizando la experiencia del usuario y la escalabilidad.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Diseño Web, SEO & UI/UX",
+    badge: "Rendimiento & Diseño",
+    description:
+      "Creación de interfaces limpias, accesibles y responsivas con Tailwind CSS, optimización estratégica para motores de búsqueda (SEO) y sitios estáticos ultrarrápidos con Next.js y Astro.",
+  },
+];
 ---
 
-<article class="flex flex-col items-center gap-10 md:flex-row reveal">
-  <!-- Text content -->
-  <div
-    class="flex-1 order-2 md:order-1 space-y-5 text-[var(--color-text-secondary)] leading-relaxed text-pretty"
+<div class="flex flex-col gap-12 md:gap-14 reveal">
+  <!-- Top Profile + Story Section -->
+  <article
+    class="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-12"
   >
-    <p>
-      Soy Darwin Niño, aunque mis amigos me llaman
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >Darwinini</strong
-      >. Empecé en la programación a los 18 años, durante mi etapa en la
-      universidad, utilizando
-      <strong class="text-[var(--color-accent-warm)] font-semibold">Java</strong
-      >. Actualmente me encuentro estudiando, aprendiendo y reforzando mis
-      conocimientos en el mundo del desarrollo de software web y el diseño web.
-    </p>
-
-    <p>
-      Algunos de mis logros incluyen la creación de una
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >página web para generar códigos QR</strong
-      >, que si bien no es perfecta, cumple con su propósito. Desarrollo de
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >aplicaciones web desde cero</strong
-      >, usando
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >React</strong
-      > y diseño web en
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >WordPress</strong
-      >, y también el desarrollo de un
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >software estadístico para la gestión de licencias</strong
-      > utilizando
-      <strong class="text-[var(--color-accent-warm)] font-semibold">C#</strong>.
-    </p>
-
-    <p>
-      Actualmente sigo dedicando mi tiempo a realizar
-      <strong class="text-[var(--color-accent-warm)] font-semibold"
-        >proyectos personales</strong
-      >, lo que me permite reforzar mis habilidades, crecer profesionalmente y
-      continuar avanzando hacia mis objetivos.
-    </p>
-  </div>
-
-  <!-- Profile image -->
-  <div class="order-1 md:order-2 flex-shrink-0">
-    <div class="relative group">
-      <div
-        class="absolute -inset-2 rounded-2xl bg-gradient-to-tr from-[var(--color-accent)]/20 to-[var(--color-accent-secondary)]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+    <!-- Text content -->
+    <div
+      class="flex-1 space-y-5 text-[var(--color-text-secondary)] leading-relaxed text-pretty text-sm sm:text-base"
+    >
+      <!-- <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-[var(--color-border)] text-xs font-medium text-[var(--color-accent)]"
       >
+        <Terminal class="size-3.5" />
+        <span>Ingeniero de Sistemas & Desarrollador Web</span>
+      </div> -->
+
+      <p>
+        ¡Hola! Soy Darwin Niño, también conocido en la comunidad como{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >Darwinini</strong
+        >.{" "}
+        Mi vocación por la ingeniería y el desarrollo de software comenzó a los 18
+        años durante mis estudios universitarios, forjando una sólida base lógica
+        y algorítmica con{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >Java y C#</strong
+        >.{" "}
+        Desde entonces, me he enfocado en transformar ideas complejas en soluciones
+        digitales intuitivas, escalables y visualmente atractivas.
+      </p>
+
+      <p>
+        A través de los proyectos que he construido, me he especializado en el
+        desarrollo de aplicaciones completas: desde un{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >sistema ERP integral (Sange)</strong
+        >{" "}
+        con control de inventarios, reportes analíticos y autenticación por roles,
+        hasta una plataforma de{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >comercio electrónico fullstack (Darwinini Ecommerce)</strong
+        >{" "}
+        con catálogo dinámico y pasarela de pagos, uniendo la reactividad de{
+          " "
+        }
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >React, TypeScript y Vite</strong
+        >{" "}
+        con el respaldo de{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >Supabase</strong
+        >{" "}
+        como backend.
+      </p>
+
+      <p>
+        Mi experiencia también abarca soluciones de alto impacto empresarial:
+        desde la{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >migración completa</strong
+        >{" "}
+        de plataformas heredadas de WordPress a arquitecturas modernas en React (como
+        para Grupo Colega en el sector de seguridad), hasta el diseño, optimización{
+          " "
+        }
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >SEO</strong
+        >{" "}
+        y mantenimiento técnico de sitios corporativos (Zona Forense, Auto Sinergia
+        e Insignia), además de aplicaciones ultrarrápidas construidas con{" "}
+        <strong class="text-[var(--color-accent-warm)] font-semibold"
+          >Next.js y Astro</strong
+        >.
+      </p>
+    </div>
+
+    <!-- Profile showcase card -->
+    <div class="flex-shrink-0 w-full sm:w-auto flex justify-center">
+      <div class="relative group">
+        <!-- Ambient animated backdrop glow -->
+        <div
+          class="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-[var(--color-accent)]/30 via-[var(--color-accent-secondary)]/25 to-[var(--color-accent-warm)]/20 blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-glow"
+        >
+        </div>
+
+        <!-- Glass container card -->
+        <div
+          class="relative glass rounded-3xl p-3 border border-[var(--color-border)] shadow-2xl transition-all duration-500 group-hover:border-[var(--color-accent)]/40 group-hover:-translate-y-1"
+        >
+          <!-- Image wrapper with floating badges -->
+          <div class="relative overflow-hidden rounded-2xl">
+            <img
+              width="280"
+              height="280"
+              src="/darwin.png"
+              alt={personalImageAlt}
+              class="w-56 sm:w-64 md:w-72 aspect-square object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+              style="object-position: 50% 50%"
+            />
+
+            <!-- Top floating badge: Role -->
+            <!-- <div
+              class="absolute top-3 left-3 glass px-3 py-1 rounded-full flex items-center gap-1.5 border border-white/20 shadow-lg text-[11px] font-semibold text-white backdrop-blur-md"
+            >
+              <span class="size-2 rounded-full bg-emerald-700 animate-pulse"></span>
+              <span>Ing. de Sistemas</span>
+            </div> -->
+
+            <!-- Bottom floating badge: Fullstack -->
+            <div
+              class="absolute top-3 left-3 glass px-3 py-1 rounded-full flex items-center gap-1.5 border border-white/20 shadow-lg text-[11px] font-semibold text-black backdrop-blur-md"
+            >
+              <CodeXml class="size-4 text-black animate-pulse" />
+              <span>Full Stack Dev</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <img
-        width="250"
-        height="250"
-        src="/darwin.png"
-        alt={personalImageAlt}
-        class="relative w-52 md:w-64 aspect-square object-cover rounded-2xl ring-1 ring-[var(--color-border)] shadow-2xl shadow-black/20 transition-transform duration-500 group-hover:scale-[1.02]"
-        style="object-position: 50% 50%"
-      />
+    </div>
+  </article>
+
+  <!-- Value Pillars / Highlights Grid -->
+  <div>
+    <h3
+      class="text-xs sm:text-sm font-semibold tracking-wider uppercase text-[var(--color-text-muted)] mb-4 flex items-center gap-2"
+    >
+      <ClipboardList class="size-4 text-[var(--color-accent)]" />
+      Pilares & Enfoque de Desarrollo
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {
+        HIGHLIGHTS.map(({ icon: Icon, title, badge, description }) => (
+          <div class="glass rounded-2xl p-5 transition-all duration-300 hover:border-[var(--color-accent)]/30 hover:-translate-y-1 hover:shadow-[0_0_25px_var(--color-glow)] group">
+            <div class="flex items-center justify-between mb-3">
+              <div class="p-2.5 rounded-xl bg-[var(--color-accent)]/10 text-[var(--color-accent)] group-hover:scale-110 transition-transform duration-300">
+                <Icon class="size-5" />
+              </div>
+              <span class="text-[10px] font-semibold tracking-wide uppercase px-2.5 py-0.5 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] border border-[var(--color-accent)]/20">
+                {badge}
+              </span>
+            </div>
+            <h4 class="text-base font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-accent)] transition-colors">
+              {title}
+            </h4>
+            <p class="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
+              {description}
+            </p>
+          </div>
+        ))
+      }
     </div>
   </div>
-</article>
+
+  <!-- Tech Stack Pills Bar -->
+  <div class="glass rounded-2xl p-4 sm:p-5 mt-2">
+    <div
+      class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3"
+    >
+      <span
+        class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-2"
+      >
+        <Terminal class="size-3.5 text-[var(--color-accent-secondary)]" />
+        Stack tecnológico en producción
+      </span>
+      <span class="text-xs text-[var(--color-accent)] font-medium">
+        Validado en proyectos reales
+      </span>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      {
+        CORE_SKILLS.map(({ name, icon: Icon, class: colorClass }) => (
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-black/5 dark:bg-white/5 border border-[var(--color-border)] hover:border-[var(--color-accent)]/30 hover:scale-105 transition-all duration-200">
+            <Icon size={14} className={colorClass} />
+            <span class="text-[var(--color-text-primary)]">{name}</span>
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</div>
