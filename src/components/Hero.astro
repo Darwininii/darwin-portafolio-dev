@@ -9,13 +9,10 @@ import SocialPill from "./SocialPill.astro";
   <!-- Avatar + Badge row -->
   <div class="flex items-center gap-4 mb-6 animate-fade-in-up">
     <div class="relative group">
-      <div
-        class="absolute -inset-1 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] opacity-50 blur-md group-hover:opacity-80 transition-opacity duration-500"
-      >
-      </div>
+      <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] opacity-50 blur-md group-hover:opacity-80 transition-opacity duration-500"></div>
       <img
         class="relative rounded-full size-20 md:size-24 object-cover ring-2 ring-[var(--color-border)]"
-        src="/darwin.png"
+        src="/Darwin.jpg"
         alt={personalImageAlt}
       />
     </div>
@@ -25,25 +22,20 @@ import SocialPill from "./SocialPill.astro";
   </div>
 
   <!-- Heading -->
-  <h1
-    class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight animate-fade-in-up animate-delay-200"
-  >
-    Hey, Soy
-    <span
-      class="bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent-secondary)] to-[var(--color-accent)] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]"
-    >
-      Darwinini!
+  <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight animate-fade-in-up animate-delay-200">
+    Hey, Soy{" "}
+    <span class="bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent-secondary)] to-[var(--color-accent)] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
+      Darwin!
     </span>
   </h1>
 
   <!-- Subtitle -->
-  <p
-    class="mt-6 text-lg md:text-xl leading-relaxed text-[var(--color-text-secondary)] animate-fade-in-up animate-delay-400"
-  >
+  <p class="mt-6 text-lg md:text-xl leading-relaxed text-[var(--color-text-secondary)] animate-fade-in-up animate-delay-400">
     <strong class="text-[var(--color-accent-warm)] font-semibold">
       Ingeniero de Sistemas,
     </strong>{" "}
-    Desarrollador y Diseñador web. Apasionado por la tecnología y el aprendizaje continuo.
+    Desarrollador y Diseñador web. Apasionado por la tecnología y el aprendizaje
+    continuo.
   </p>
 
   <nav class="flex flex-wrap gap-3 mt-8 animate-fade-in-up animate-delay-600">
