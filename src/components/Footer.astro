@@ -1,28 +1,59 @@
 ---
-import { Heart, ExternalLink } from "@lucide/astro";
+import { Heart, ExternalLink, Linkedin, Github, ArrowUp } from "@lucide/astro";
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mt-auto">
   <!-- Gradient top border -->
-  <div class="h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent"></div>
+  <div
+    class="h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent"
+  >
+  </div>
 
   <div class="w-full max-w-4xl mx-auto px-4 py-10 md:py-14">
     <!-- Top row -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8">
-      <a href="/" class="flex items-center gap-3 group">
-        <img
-          src="/Darwin.jpg"
-          class="rounded-full size-10 ring-1 ring-[var(--color-border)] transition-transform group-hover:scale-110"
-          alt="Darwin Logo"
-        />
-        <span class="text-xl font-bold bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] bg-clip-text text-transparent">
-          Darwinini
-        </span>
+    <div
+      class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-8"
+    >
+      <a href="/" class="flex items-center gap-3.5 group">
+        <div class="relative">
+          <div
+            class="absolute -inset-1 rounded-xl bg-gradient-to-tr from-[var(--color-accent)]/30 to-[var(--color-accent-secondary)]/30 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          >
+          </div>
+          <div
+            class="relative glass p-1 rounded-xl border border-[var(--color-border)] shadow-lg transition-all duration-300 group-hover:border-[var(--color-accent)]/40 group-hover:-translate-y-0.5"
+          >
+            <img
+              src="/Darwin.webp"
+              class="w-11 h-14 object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+              style="object-position: 50% 35%"
+              alt="Darwin Niño - Darwinini"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span
+            class="text-xl font-bold bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] bg-clip-text text-transparent"
+          >
+            Darwinini
+          </span>
+          <span class="text-xs text-[var(--color-text-muted)]">
+            Ing. de Sistemas · Full Stack Dev
+          </span>
+        </div>
       </a>
 
-      <nav>
-        <ul class="flex flex-wrap items-center gap-6 text-sm">
+      <nav aria-label="Navegación del pie de página">
+        <ul class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 text-sm">
+          <li>
+            <a
+              href="/#sobre-mi"
+              class="text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors"
+            >
+              Sobre mí
+            </a>
+          </li>
           <li>
             <a
               href="/#proyectos"
@@ -59,7 +90,9 @@ const currentYear = new Date().getFullYear();
     <div class="h-px bg-[var(--color-border)] mb-6"></div>
 
     <!-- Support message -->
-    <p class="text-center text-sm text-[var(--color-text-muted)] mb-4 max-w-lg mx-auto leading-relaxed">
+    <p
+      class="text-center text-sm text-[var(--color-text-muted)] mb-6 max-w-lg mx-auto leading-relaxed"
+    >
       Si deseas apoyarme en el camino para alcanzar mis metas y proyectos, tu
       contribución será recibida con gratitud y compromiso.
       <a
@@ -72,18 +105,51 @@ const currentYear = new Date().getFullYear();
       </a>
     </p>
 
-    <!-- Copyright -->
-    <p class="text-center text-xs text-[var(--color-text-muted)]">
-      &copy; {currentYear}
-      <a
-        href="https://www.linkedin.com/in/darwin-ni%C3%B1o/"
-        target="_blank"
-        rel="noopener"
-        class="hover:text-[var(--color-accent)] transition-colors"
-      >
-        Darwinini™
-      </a>
-      . Todos los Derechos Reservados.
-    </p>
+    <!-- Bottom row: Copyright + Social & Back to top -->
+    <div
+      class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 text-xs text-[var(--color-text-muted)]"
+    >
+      <p class="text-center sm:text-left">
+        &copy; {currentYear}
+        <a
+          href="https://www.linkedin.com/in/darwin-ni%C3%B1o/"
+          target="_blank"
+          rel="noopener"
+          class="hover:text-[var(--color-accent)] transition-colors font-medium"
+        >
+          Darwinini™
+        </a>
+        . Todos los Derechos Reservados.
+      </p>
+
+      <div class="flex items-center gap-2.5">
+        <a
+          href="https://www.linkedin.com/in/darwin-ni%C3%B1o/"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+          class="p-2 rounded-xl glass border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]/30 transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <Linkedin class="size-4" />
+        </a>
+        <a
+          href="https://github.com/Darwininii"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+          class="p-2 rounded-xl glass border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]/30 transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <Github class="size-4" />
+        </a>
+        <a
+          href="#"
+          aria-label="Volver arriba"
+          class="inline-flex items-center gap-1 px-3 py-2 rounded-xl glass border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]/30 transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <ArrowUp class="size-3.5" />
+          <span>Subir</span>
+        </a>
+      </div>
+    </div>
   </div>
 </footer>

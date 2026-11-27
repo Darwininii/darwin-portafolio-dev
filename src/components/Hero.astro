@@ -1,57 +1,97 @@
 ---
 const personalImageAlt = "Darwin Niño Escorcia";
 import Badge from "./Badge.astro";
-import { Linkedin, Github, ContactRound } from "@lucide/astro";
+import { ContactRound } from "@lucide/astro";
+import { FaLinkedin } from "react-icons/fa";
+import Iconos from "./Iconos.astro";
 import SocialPill from "./SocialPill.astro";
 ---
 
-<div class="max-w-2xl">
-  <!-- Avatar + Badge row -->
-  <div class="flex items-center gap-4 mb-6 animate-fade-in-up">
-    <div class="relative group">
-      <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-secondary)] opacity-50 blur-md group-hover:opacity-80 transition-opacity duration-500"></div>
-      <img
-        class="relative rounded-full size-20 md:size-24 object-cover ring-2 ring-[var(--color-border)]"
-        src="/Darwin.jpg"
-        alt={personalImageAlt}
-      />
+<div
+  class="flex flex-col md:flex-row items-center md:items-center gap-8 md:gap-10"
+>
+  <!-- Portrait showcase card (left on desktop, top on mobile) -->
+  <div class="relative group flex-shrink-0 animate-fade-in-up">
+    <!-- Ambient animated glow -->
+    <div
+      class="absolute -inset-2.5 rounded-3xl bg-gradient-to-tr from-[var(--color-accent)]/35 via-[var(--color-accent-secondary)]/25 to-[var(--color-accent-warm)]/20 blur-2xl opacity-65 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-glow"
+    >
     </div>
-    <a href="#contacto" rel="noopener" class="transition hover:scale-105">
-      <Badge>Disponible para trabajar</Badge>
-    </a>
+
+    <!-- Glass frame matching AboutMe.astro -->
+    <div
+      class="relative glass rounded-3xl p-2 border border-[var(--color-border)] shadow-2xl transition-all duration-500 group-hover:border-[var(--color-accent)]/40 group-hover:-translate-y-1"
+    >
+      <div class="relative overflow-hidden rounded-2xl">
+        <img
+          width="192"
+          height="240"
+          class="w-40 h-48 sm:w-44 sm:h-56 md:w-48 md:h-60 object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+          style="object-position: 50% 35%"
+          src="/Darwin.webp"
+          alt={personalImageAlt}
+        />
+        <!-- Subtle bottom vignette for studio depth -->
+        <div
+          class="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 via-transparent to-transparent"
+        >
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Heading -->
-  <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight animate-fade-in-up animate-delay-200">
-    Hey, Soy{" "}
-    <span class="bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent-secondary)] to-[var(--color-accent)] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">
-      Darwin!
-    </span>
-  </h1>
+  <!-- Main hero content (right on desktop) -->
+  <div
+    class="flex-1 flex flex-col items-center md:items-start text-center md:text-left"
+  >
+    <a
+      href="#contacto"
+      rel="noopener"
+      class="mb-4 transition hover:scale-105 animate-fade-in-up animate-delay-100"
+    >
+      <Badge>Disponible para trabajar</Badge>
+    </a>
 
-  <!-- Subtitle -->
-  <p class="mt-6 text-lg md:text-xl leading-relaxed text-[var(--color-text-secondary)] animate-fade-in-up animate-delay-400">
-    <strong class="text-[var(--color-accent-warm)] font-semibold">
-      Ingeniero de Sistemas,
-    </strong>{" "}
-    Desarrollador y Diseñador web. Apasionado por la tecnología y el aprendizaje
-    continuo.
-  </p>
+    <!-- Heading -->
+    <h1
+      class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight animate-fade-in-up animate-delay-200"
+    >
+      Hey, Soy{" "}
+      <span
+        class="bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-accent-secondary)] to-[var(--color-accent)] bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]"
+      >
+        Darwin!
+      </span>
+    </h1>
 
-  <nav class="flex flex-wrap gap-3 mt-8 animate-fade-in-up animate-delay-600">
-    <!-- Al empezar con '#', automáticamente se abrirá en la misma ventana (_self) -->
-    <SocialPill href="#contacto">
-      <ContactRound class="size-4" />
-      Contacto
-    </SocialPill>
-    <!-- Estos enlaces externos se abrirán en una nueva pestaña (_blank) -->
-    <SocialPill href="https://linkedin.com/in/darwin-ni%C3%B1o/">
-      <Linkedin class="size-4" />
-      LinkedIn
-    </SocialPill>
-    <SocialPill href="https://github.com/Darwininii">
-      <Github class="size-4" />
-      GitHub
-    </SocialPill>
-  </nav>
+    <!-- Subtitle -->
+    <p
+      class="mt-4 max-w-xl text-base sm:text-lg md:text-xl leading-relaxed text-[var(--color-text-secondary)] animate-fade-in-up animate-delay-400"
+    >
+      <strong class="text-[var(--color-accent-warm)] font-semibold">
+        Ingeniero de Sistemas,
+      </strong>{" "}
+      Desarrollador y Diseñador web. Apasionado por la tecnología y el aprendizaje
+      continuo.
+    </p>
+
+    <nav
+      class="flex flex-wrap justify-center md:justify-start gap-3 mt-6 animate-fade-in-up animate-delay-600"
+    >
+      <!-- Al empezar con '#', automáticamente se abrirá en la misma ventana (_self) -->
+      <SocialPill href="#contacto">
+        <ContactRound class="size-4" />
+        Contacto
+      </SocialPill>
+      <!-- Estos enlaces externos se abrirán en una nueva pestaña (_blank) -->
+      <SocialPill href="https://linkedin.com/in/darwin-ni%C3%B1o/">
+        <FaLinkedin size={16} />
+        LinkedIn
+      </SocialPill>
+      <SocialPill href="https://github.com/Darwininii">
+        <Iconos name="GitHub" iconOnly size={16} />
+        GitHub
+      </SocialPill>
+    </nav>
+  </div>
 </div>

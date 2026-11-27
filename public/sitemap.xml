@@ -11,49 +11,49 @@
 
     <!-- Foto de perfil -->
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/Darwin.jpg</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/Darwin.webp</image:loc>
       <image:title>Darwin Niño Escorcia - Ingeniero de Sistemas y Desarrollador Web</image:title>
     </image:image>
 
     <!-- Capturas de proyectos -->
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Sange_ERP.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Sange_ERP.webp</image:loc>
       <image:title>Sange - ERP</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Law_Office.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Law_Office.webp</image:loc>
       <image:title>Law Office - Abogados</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Grupo_Colega.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Grupo_Colega.webp</image:loc>
       <image:title>Grupo Colega</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Zona_Forense.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Zona_Forense.webp</image:loc>
       <image:title>Zona Forense</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Darw_Ecomm.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Darw_Ecomm.webp</image:loc>
       <image:title>Darwinini Ecommerce</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/AireTec.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/AireTec.webp</image:loc>
       <image:title>AireTec</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/QR_Darwin.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/QR_Darwin.webp</image:loc>
       <image:title>QR-Darw</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Insignia.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Insignia.webp</image:loc>
       <image:title>Resto-Bar Insignia</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Auto_Sinergia.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Auto_Sinergia.webp</image:loc>
       <image:title>Auto Sinergia</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://darwinini-dev.onrender.com/projects/Portafolio.png</image:loc>
+      <image:loc>https://darwinini-dev.onrender.com/projects/Portafolio.webp</image:loc>
       <image:title>Portafolio Darwin Niño</image:title>
     </image:image>
   </url>

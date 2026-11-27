@@ -22,7 +22,7 @@ const personSchema = {
   alternateName: "Darwinini",
   jobTitle: "Ingeniero de Sistemas y Desarrollador Web Full Stack",
   url: siteUrl,
-  image: `${siteUrl}/Darwin.jpg`,
+  image: `${siteUrl}/Darwin.webp`,
   sameAs: [
     "https://www.linkedin.com/in/darwin-ni%C3%B1o/",
     "https://github.com/Darwininii",
@@ -44,7 +44,12 @@ const personSchema = {
     <meta name="robots" content="index, follow" />
 
     <link rel="canonical" href={`${siteUrl}/`} />
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap.xml"
+    />
     <link rel="icon" type="image/svg+xml" href="/-logo-.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0b0d17" />
@@ -65,8 +70,10 @@ const personSchema = {
     <meta name="twitter:image" content={ogImage} />
 
     <!-- Datos estructurados JSON-LD para Google -->
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
     <ClientRouter />
   </head>
 

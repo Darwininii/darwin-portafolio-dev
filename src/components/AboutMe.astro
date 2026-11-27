@@ -1,26 +1,15 @@
 ---
 import {
   Layers,
-  Atom,
   TrendingUp,
   Terminal,
   CodeXml,
   ClipboardList,
 } from "@lucide/astro";
+import { SiReact } from "react-icons/si";
 import Iconos from "./Iconos.astro";
 
 const personalImageAlt = "Darwin Niño Escorcia - Darwinini";
-
-const CORE_SKILLS = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Astro",
-  "Supabase",
-  "Tailwind CSS",
-  "WordPress",
-  "Vite",
-];
 
 const HIGHLIGHTS = [
   {
@@ -31,7 +20,7 @@ const HIGHLIGHTS = [
       "Arquitectura y desarrollo de soluciones robustas como ERPs integrales y plataformas E-commerce con autenticación por roles, analíticas, control de inventarios y bases de datos con Supabase y React.",
   },
   {
-    icon: Atom,
+    icon: SiReact,
     title: "Migraciones & Modernización",
     badge: "WordPress a React",
     description:
@@ -131,7 +120,7 @@ const HIGHLIGHTS = [
             <img
               width="280"
               height="280"
-              src="/Darwin.jpg"
+              src="/Darwin.webp"
               alt={personalImageAlt}
               class="w-56 sm:w-64 md:w-72 aspect-square object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
               style="object-position: 50% 50%"
@@ -198,7 +187,7 @@ const HIGHLIGHTS = [
     </div>
 
     <div class="flex flex-wrap gap-2">
-      {CORE_SKILLS.map((skill) => <Iconos name={skill} />)}
+      <Iconos all />
     </div>
   </div>
 </div>
