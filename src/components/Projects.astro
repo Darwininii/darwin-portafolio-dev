@@ -1,100 +1,42 @@
 ---
-import {
-  SiWordpress,
-  SiJavascript,
-  SiTailwindcss,
-  SiNextdotjs,
-  SiAstro,
-  SiFirebase,
-  SiReact,
-  SiTypescript,
-  SiVite,
-  SiSupabase,
-  SiCss,
-  SiGithub,
-} from "react-icons/si";
 import { FaCircleArrowDown } from "react-icons/fa6";
 import { ExternalLink, ChevronDown } from "@lucide/astro";
+import Iconos from "./Iconos.astro";
 import LinkButton from "./LinkButton.astro";
 import ProjectImage from "./ProjectImage.astro";
 import ImageViewer from "./ImageViewer.astro";
 
 const TAGS = {
-  WORDPRESS: {
-    name: "WordPress",
-    icon: SiWordpress,
-    class:
-      "bg-[#21759B]/10 dark:bg-[#21759B]/20 text-[#21759B] dark:text-blue-300 border-[#21759B]/20",
-  },
-  GITHUB: {
-    name: "GitHub",
-    icon: SiGithub,
-    class:
-      "bg-black/5 dark:bg-white/5 text-black dark:text-[var(--color-text-primary)] border-black/10 dark:border-white/10",
-  },
-  JAVASCRIPT: {
-    name: "JavaScript",
-    icon: SiJavascript,
-    class:
-      "bg-[#F7DF1E]/20 dark:bg-[#F7DF1E]/10 text-[#B4A000] dark:text-[#F7DF1E] border-[#F7DF1E]/30 dark:border-[#F7DF1E]/20",
-  },
-  TAILWIND: {
-    name: "Tailwind",
-    icon: SiTailwindcss,
-    class:
-      "bg-[#06B6D4]/10 text-[#0891B2] dark:text-[#06B6D4] border-[#06B6D4]/20",
-  },
-  NEXTJS: {
-    name: "Next.js",
-    icon: SiNextdotjs,
-    class:
-      "bg-black/5 dark:bg-white/5 text-black dark:text-[var(--color-text-primary)] border-black/10 dark:border-white/10",
-  },
-  ASTROICON: {
-    name: "Astro",
-    icon: SiAstro,
-    class:
-      "bg-[#FF5D01]/10 text-[#D04B00] dark:text-[#FF5D01] border-[#FF5D01]/20",
-  },
-  FIREBASE: {
-    name: "Firebase",
-    icon: SiFirebase,
-    class:
-      "bg-[#FFCA28]/20 dark:bg-[#FFCA28]/10 text-[#D97706] dark:text-[#FFCA28] border-[#FFCA28]/30 dark:border-[#FFCA28]/20",
-  },
-  REACT: {
-    name: "React",
-    icon: SiReact,
-    class:
-      "bg-[#61DAFB]/20 dark:bg-[#61DAFB]/10 text-[#0284C7] dark:text-[#61DAFB] border-[#61DAFB]/30 dark:border-[#61DAFB]/20",
-  },
-  TYPESCRIPT: {
-    name: "TypeScript",
-    icon: SiTypescript,
-    class:
-      "bg-[#3178C6]/10 text-[#2563EB] dark:text-blue-400 border-[#3178C6]/20",
-  },
-  VITE: {
-    name: "Vite",
-    icon: SiVite,
-    class:
-      "bg-[#646CFF]/10 dark:bg-purple-500/10 text-[#4F46E5] dark:text-purple-400 border-[#646CFF]/20",
-  },
-  SUPABASE: {
-    name: "Supabase",
-    icon: SiSupabase,
-    class:
-      "bg-[#3ECF8E]/10 text-[#059669] dark:text-[#3ECF8E] border-[#3ECF8E]/20",
-  },
-  CSS: {
-    name: "CSS",
-    icon: SiCss,
-    class:
-      "bg-[#1572B6]/10 dark:bg-cyan-500/15 text-[#1572B6] dark:text-blue-300 border-[#1572B6]/20",
-  },
-};
+  WORDPRESS: "WordPress",
+  GITHUB: "GitHub",
+  JAVASCRIPT: "JavaScript",
+  TAILWIND: "Tailwind",
+  NEXTJS: "Next.js",
+  ASTROICON: "Astro",
+  FIREBASE: "Firebase",
+  REACT: "React",
+  TYPESCRIPT: "TypeScript",
+  VITE: "Vite",
+  SUPABASE: "Supabase",
+  CSS: "CSS",
+  HTML: "HTML",
+  SQUARESPACE: "Squarespace",
+} as const;
 
 const PROJECTS = [
+  {
+    title: "Restaurante Bar Insignia 2.0",
+    description:
+      "Renovación integral del sitio web para Restaurante Bar Insignia, evolucionando su plataforma anterior en WordPress hacia una nueva experiencia digital construida en Squarespace por preferencia del cliente. Se integró código personalizado con HTML, JavaScript y CSS para llevar el diseño visual a otro nivel, sumar interactividad a medida y ofrecer una navegación fluida, elegante y responsiva.",
+    link: "https://restaurantebarinsignia.com/",
+    images: [
+      "/projects/Insignia-bar.png",
+      "/projects/Insignia-bar-2.png",
+      "/projects/Insignia-bar-3.png",
+      "/projects/Insignia-bar-4.png",
+    ],
+    tags: [TAGS.SQUARESPACE, TAGS.HTML, TAGS.JAVASCRIPT, TAGS.CSS],
+  },
   {
     title: "Sange - ERP",
     description:
@@ -135,7 +77,7 @@ const PROJECTS = [
       "Desarrollo de página web corporativa para Zona Forense & Staff Seguridad, enfocada en proyectar la identidad y profesionalismo de la compañía. La plataforma estructura de manera clara su información institucional, abarcando su misión, visión y áreas de especialidad como Investigaciones, Pruebas Periciales, Informática Forense y Representación Legal. Construida en WordPress y complementada con estilos personalizados en CSS, asegurando una experiencia de usuario fluida, moderna y un diseño responsivo.",
     link: "https://www.zonaforense.com/",
     image: "/projects/Zona_Forense.png",
-    tags: [TAGS.WORDPRESS, TAGS.CSS],
+    tags: [TAGS.WORDPRESS, TAGS.CSS, TAGS.HTML, TAGS.JAVASCRIPT],
   },
   {
     title: "Darwinini Ecommerce",
@@ -182,7 +124,7 @@ const PROJECTS = [
       "Desarrollo y mantenimiento de la página web para el Resto-Bar Insignia, utilizando WordPress. Implementación de estrategias SEO para mejorar la visibilidad en motores de búsqueda y asegurar un rendimiento óptimo del sitio.",
     link: "https://restauranteinsignia.com/",
     images: ["/projects/Insignia.png", "/projects/Insignia_2.png"],
-    tags: [TAGS.WORDPRESS, TAGS.CSS],
+    tags: [TAGS.WORDPRESS, TAGS.CSS, TAGS.HTML, TAGS.JAVASCRIPT],
   },
   {
     title: "Auto Sinergia",
@@ -190,7 +132,7 @@ const PROJECTS = [
       "Desarrollo y mantenimiento de la página web para Auto Sinergia, utilizando WordPress. Gestion de contenido, optimización SEO y mantenimiento técnico para asegurar un rendimiento óptimo del sitio.",
     link: "https://autosinergia.com/",
     images: ["/projects/Auto_Sinergia.png", "/projects/Auto_Sinergia_2.png"],
-    tags: [TAGS.WORDPRESS, TAGS.CSS],
+    tags: [TAGS.WORDPRESS, TAGS.CSS, TAGS.HTML, TAGS.JAVASCRIPT],
   },
   {
     title: "Portafolio",
@@ -205,102 +147,90 @@ const PROJECTS = [
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-  {
-    PROJECTS.map(
-      ({ title, description, image, images, tags, link, github }, i) => (
-        <article
-          class={`group glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_var(--color-glow)] hover:border-[var(--color-accent)]/20 hover:-translate-y-1 project-card reveal ${i >= 6 ? "hidden" : ""}`}
-          style={`animation-delay: ${i < 6 ? i * 100 : 0}ms`}
-        >
-          {/* Image — Click to view in full size */}
-          <ProjectImage title={title} image={image} images={images} />
+  {PROJECTS.map(
+    ({ title, description, image, images, tags = [], link, github }, i) => (
+      <article
+        class={`group glass rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_var(--color-glow)] hover:border-[var(--color-accent)]/20 hover:-translate-y-1 project-card reveal ${i >= 6 ? "hidden" : ""}`}
+        style={`animation-delay: ${i < 6 ? i * 100 : 0}ms`}
+      >
+        {/* Image — Click to view in full size */}
+        <ProjectImage title={title} image={image} images={images} />
 
-          {/* Content */}
-          <div class="p-5">
-            <h3 class="text-lg font-bold text-[var(--color-text-primary)] mb-2">
-              {title}
-            </h3>
+        {/* Content */}
+        <div class="p-5">
+          <h3 class="text-lg font-bold text-[var(--color-text-primary)] mb-2">
+            {title}
+          </h3>
 
-            {/* Tags */}
-            <ul class="flex flex-wrap gap-1.5 mb-3">
-              {tags.map((tag) => {
-                const Icon = tag.icon;
-                return (
-                  <li>
-                    <span
-                      class={`inline-flex items-center gap-1.5 rounded-full text-[11px] font-medium px-2.5 py-0.5 border ${tag.class}`}
-                    >
-                      <Icon size={14} />
-                      {tag.name}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
+          {/* Tags */}
+          <ul class="flex flex-wrap gap-1.5 mb-3">
+            {tags.map((tag) => (
+              <li>
+                <Iconos name={tag} />
+              </li>
+            ))}
+          </ul>
 
-            {/* Description with "Leer más" */}
-            <div class="project-desc-wrapper">
-              <p class="project-desc text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3">
-                {description}
-              </p>
-              <button class="read-more-btn mt-2 inline-flex items-center gap-1 text-xs font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-secondary)] transition-colors">
-                <span class="read-more-text">Leer más</span>
-                <ChevronDown class="size-3.5 read-more-icon transition-transform duration-200" />
-              </button>
-            </div>
-
-            {/* Bottom links */}
-            <div class="flex items-center gap-3 mt-4 pt-4 border-t border-[var(--color-border)]">
-              {github && (
-                <LinkButton href={github}>
-                  <SiGithub size={14} />
-                  Código
-                </LinkButton>
-              )}
-              {link && (
-                <LinkButton href={link}>
-                  <ExternalLink class="size-4" />
-                  Visitar
-                </LinkButton>
-              )}
-            </div>
+          {/* Description with "Leer más" */}
+          <div class="project-desc-wrapper">
+            <p class="project-desc text-sm text-[var(--color-text-secondary)] leading-relaxed line-clamp-3">
+              {description}
+            </p>
+            <button class="read-more-btn mt-2 inline-flex items-center gap-1 text-xs font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-secondary)] transition-colors">
+              <span class="read-more-text">Leer más</span>
+              <ChevronDown class="size-3.5 read-more-icon transition-transform duration-200" />
+            </button>
           </div>
-        </article>
-      ),
-    )
-  }
+
+          {/* Bottom links */}
+          <div class="flex items-center gap-3 mt-4 pt-4 border-t border-[var(--color-border)]">
+            {github && (
+              <LinkButton href={github}>
+                <Iconos name="GitHub" iconOnly />
+                Código
+              </LinkButton>
+            )}
+            {link && (
+              <LinkButton href={link}>
+                <ExternalLink class="size-4" />
+                Visitar
+              </LinkButton>
+            )}
+          </div>
+        </div>
+      </article>
+    ),
+  )}
 </div>
 
-{
-  PROJECTS.length > 6 && (
-    <div
-      id="show-more-container"
-      class="flex flex-col items-center mt-12 gap-2 reveal transition-all duration-500"
-      style="animation-delay: 200ms;"
-    >
-      {/* 3 dots */}
-      <div class="flex flex-col gap-2 mb-3 items-center">
-        <div class="size-[7px] rounded-full bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-glow-strong)] ring-[3px] ring-black/15 dark:ring-white/20 opacity-40" />
-        <div class="size-[9px] rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_var(--color-glow-strong)] ring-[3px] ring-black/15 dark:ring-white/20 opacity-70" />
-        <div class="size-[12px] rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_var(--color-glow-strong)] ring-[4px] ring-black/15 dark:ring-white/20" />
-      </div>
-
-      {/* Button */}
-      <button
-        id="btn-show-more"
-        class="flex flex-col items-center gap-2 text-[var(--color-accent)] hover:text-[var(--color-accent-secondary)] group transition-all duration-300 cursor-pointer"
-        aria-label="Ver más proyectos"
-      >
-        <span class="transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110">
-          <FaCircleArrowDown size={30} />
-        </span>
-        <span class="text-sm font-semibold tracking-wider uppercase mt-1">
-          Ver más proyectos
-        </span>
-      </button>
+{PROJECTS.length > 6 && (
+  <div
+    id="show-more-container"
+    class="flex flex-col items-center mt-12 gap-2 reveal transition-all duration-500"
+    style="animation-delay: 200ms;"
+  >
+    {/* 3 dots */}
+    <div class="flex flex-col gap-2 mb-3 items-center">
+      <div class="size-[7px] rounded-full bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-glow-strong)] ring-[3px] ring-black/15 dark:ring-white/20 opacity-40" />
+      <div class="size-[9px] rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_var(--color-glow-strong)] ring-[3px] ring-black/15 dark:ring-white/20 opacity-70" />
+      <div class="size-[12px] rounded-full bg-[var(--color-accent)] shadow-[0_0_12px_var(--color-glow-strong)] ring-[4px] ring-black/15 dark:ring-white/20" />
     </div>
-  )
-}
+
+    {/* Button */}
+    <button
+      id="btn-show-more"
+      class="flex flex-col items-center gap-2 text-[var(--color-accent)] hover:text-[var(--color-accent-secondary)] group transition-all duration-300 cursor-pointer"
+      aria-label="Ver más proyectos"
+    >
+      <span class="transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110">
+        <FaCircleArrowDown size={30} />
+      </span>
+      <span class="text-sm font-semibold tracking-wider uppercase mt-1">
+        Ver más proyectos
+      </span>
+    </button>
+  </div>
+)}
 
 <ImageViewer />
 

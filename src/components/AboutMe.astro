@@ -7,48 +7,19 @@ import {
   CodeXml,
   ClipboardList,
 } from "@lucide/astro";
-import {
-  SiReact,
-  SiNextdotjs,
-  SiTypescript,
-  SiTailwindcss,
-  SiSupabase,
-  SiAstro,
-  SiWordpress,
-  SiVite,
-} from "react-icons/si";
+import Iconos from "./Iconos.astro";
 
 const personalImageAlt = "Darwin Niño Escorcia - Darwinini";
 
 const CORE_SKILLS = [
-  { name: "React", icon: SiReact, class: "text-[#0284C7] dark:text-[#61DAFB]" },
-  {
-    name: "Next.js",
-    icon: SiNextdotjs,
-    class: "text-zinc-800 dark:text-zinc-200",
-  },
-  {
-    name: "TypeScript",
-    icon: SiTypescript,
-    class: "text-[#2563EB] dark:text-blue-400",
-  },
-  { name: "Astro", icon: SiAstro, class: "text-[#D04B00] dark:text-[#FF5D01]" },
-  {
-    name: "Supabase",
-    icon: SiSupabase,
-    class: "text-[#059669] dark:text-[#3ECF8E]",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: SiTailwindcss,
-    class: "text-[#0891B2] dark:text-[#06B6D4]",
-  },
-  {
-    name: "WordPress",
-    icon: SiWordpress,
-    class: "text-[#21759B] dark:text-blue-300",
-  },
-  { name: "Vite", icon: SiVite, class: "text-[#4F46E5] dark:text-purple-400" },
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Astro",
+  "Supabase",
+  "Tailwind CSS",
+  "WordPress",
+  "Vite",
 ];
 
 const HIGHLIGHTS = [
@@ -227,12 +198,7 @@ const HIGHLIGHTS = [
     </div>
 
     <div class="flex flex-wrap gap-2">
-      {CORE_SKILLS.map(({ name, icon: Icon, class: colorClass }) => (
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-black/5 dark:bg-white/5 border border-[var(--color-border)] hover:border-[var(--color-accent)]/30 hover:scale-105 transition-all duration-200">
-          <Icon size={14} className={colorClass} />
-          <span class="text-[var(--color-text-primary)]">{name}</span>
-        </span>
-      ))}
+      {CORE_SKILLS.map((skill) => <Iconos name={skill} />)}
     </div>
   </div>
 </div>

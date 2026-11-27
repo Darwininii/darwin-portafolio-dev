@@ -1,0 +1,136 @@
+---
+import {
+  SiWordpress,
+  SiJavascript,
+  SiTailwindcss,
+  SiNextdotjs,
+  SiAstro,
+  SiFirebase,
+  SiReact,
+  SiTypescript,
+  SiVite,
+  SiSupabase,
+  SiCss,
+  SiHtml5,
+  SiGithub,
+} from "react-icons/si";
+import { Squarespace } from "@dev.icons/react/mono";
+
+type TechIconComponent = (props: {
+  size?: number;
+  className?: string;
+}) => unknown;
+
+interface TechIconConfig {
+  label: string;
+  icon: TechIconComponent;
+  colorClass: string;
+}
+
+/**
+ * Registro centralizado de iconos de tecnologías.
+ * Cualquier icono nuevo debe agregarse aquí.
+ */
+const TECH_ICONS: Record<string, TechIconConfig> = {
+  React: {
+    label: "React",
+    icon: SiReact as TechIconComponent,
+    colorClass: "text-[#0284C7] dark:text-[#61DAFB]",
+  },
+  "Next.js": {
+    label: "Next.js",
+    icon: SiNextdotjs as TechIconComponent,
+    colorClass: "text-zinc-800 dark:text-zinc-200",
+  },
+  TypeScript: {
+    label: "TypeScript",
+    icon: SiTypescript as TechIconComponent,
+    colorClass: "text-[#2563EB] dark:text-blue-400",
+  },
+  Astro: {
+    label: "Astro",
+    icon: SiAstro as TechIconComponent,
+    colorClass: "text-[#D04B00] dark:text-[#FF5D01]",
+  },
+  Supabase: {
+    label: "Supabase",
+    icon: SiSupabase as TechIconComponent,
+    colorClass: "text-[#059669] dark:text-[#3ECF8E]",
+  },
+  "Tailwind CSS": {
+    label: "Tailwind CSS",
+    icon: SiTailwindcss as TechIconComponent,
+    colorClass: "text-[#0891B2] dark:text-[#06B6D4]",
+  },
+  Tailwind: {
+    label: "Tailwind",
+    icon: SiTailwindcss as TechIconComponent,
+    colorClass: "text-[#0891B2] dark:text-[#06B6D4]",
+  },
+  WordPress: {
+    label: "WordPress",
+    icon: SiWordpress as TechIconComponent,
+    colorClass: "text-[#21759B] dark:text-blue-300",
+  },
+  Vite: {
+    label: "Vite",
+    icon: SiVite as TechIconComponent,
+    colorClass: "text-[#4F46E5] dark:text-purple-400",
+  },
+  JavaScript: {
+    label: "JavaScript",
+    icon: SiJavascript as TechIconComponent,
+    colorClass: "text-[#B4A000] dark:text-[#F7DF1E]",
+  },
+  CSS: {
+    label: "CSS",
+    icon: SiCss as TechIconComponent,
+    colorClass: "text-[#1572B6] dark:text-blue-300",
+  },
+  HTML: {
+    label: "HTML",
+    icon: SiHtml5 as TechIconComponent,
+    colorClass: "text-[#D94318] dark:text-[#F16529]",
+  },
+  Firebase: {
+    label: "Firebase",
+    icon: SiFirebase as TechIconComponent,
+    colorClass: "text-[#D97706] dark:text-[#FFCA28]",
+  },
+  GitHub: {
+    label: "GitHub",
+    icon: SiGithub as TechIconComponent,
+    colorClass: "text-zinc-800 dark:text-zinc-200",
+  },
+  Squarespace: {
+    label: "Squarespace",
+    icon: Squarespace as unknown as TechIconComponent,
+    colorClass: "text-zinc-800 dark:text-zinc-200",
+  },
+};
+
+export type TechIconName = keyof typeof TECH_ICONS;
+
+interface Props {
+  name: TechIconName | string;
+  iconOnly?: boolean;
+  size?: number;
+}
+
+const { name, iconOnly = false, size = 14 } = Astro.props;
+const item = TECH_ICONS[name];
+const Icon = item?.icon;
+---
+
+{
+  item && Icon ? (
+    iconOnly ? (
+      <Icon size={size} className="text-current" />
+    ) : (
+      <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium bg-black/5 dark:bg-white/5 border border-[var(--color-border)] hover:border-[var(--color-accent)]/30 hover:scale-105 transition-all duration-200">
+        <Icon size={size} className={item.colorClass} />
+        <span class="text-[var(--color-text-primary)]">{item.label}</span>
+      </span>
+    )
+  ) : null
+}
